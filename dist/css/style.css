@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 :root {
   --color-white: #fff;
+  --color-black: #151515;
   --color-dark: #222223;
   --color-muted: #333;
   --color-primary: #ff2c6d;
@@ -38,9 +39,23 @@ body {
   font-size: 3.75rem;
 }
 
-.container {
-  margin-right: 75px;
-  margin-left: 75px;
+.section-subtitle {
+  font-size: 3rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-family: "Zilla Slab", serif;
+  color: var(--color-white, #fff);
+}
+
+.container, .container-center {
+  max-width: 1280px;
+  padding-right: 75px;
+  padding-left: 75px;
+}
+
+.container-center {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .text-primary {
@@ -72,15 +87,20 @@ body {
 }
 
 .leading {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.4;
   color: var(--color-white, #fff);
+  font-family: "Comfortaa", cursive;
 }
 
 .btn {
   cursor: pointer;
   background-color: transparent;
   transition: all 0.25s, outline 0s;
+  display: inline-block;
+}
+.btn:focus {
+  text-decoration: underline;
 }
 .btn--lg {
   width: 250px;
@@ -99,7 +119,7 @@ body {
 .bg-title {
   margin-right: 2.5rem;
   font-size: 7.5rem;
-  color: rgba(230, 230, 230, 0.2);
+  color: rgba(230, 230, 230, 0.05);
   text-align: right;
 }
 
@@ -107,7 +127,7 @@ body {
   position: fixed;
   height: 100vh;
   min-height: 400px;
-  background-color: #151515;
+  background-color: var(--color-black, #151515);
   grid-column: 1/2;
 }
 .sidebar .logo {
@@ -207,18 +227,21 @@ body {
   align-items: flex-end;
   max-height: 560px;
 }
+.main .portfolio__top img {
+  opacity: 0.05;
+  position: absolute;
+  width: 100%;
+}
 .main .portfolio__content {
   padding-top: 12rem;
 }
 .main .portfolio__content .leading {
   max-width: 700px;
 }
-.main .skills {
-  padding-bottom: 10rem;
-}
 .main .skills__cards {
   display: flex;
   justify-content: center;
+  margin-bottom: 7rem;
 }
 .main .skills__card {
   width: 400px;
@@ -274,6 +297,95 @@ body {
 }
 .main .skills__graphic::before {
   transform: scale(1.32);
+}
+.main .about {
+  position: relative;
+  padding-top: 14rem;
+  padding-bottom: 14rem;
+}
+.main .about .bg-title {
+  top: 0;
+  right: 0;
+  margin-top: 0;
+  font-size: 36.25rem;
+  position: absolute;
+  line-height: 0.8;
+}
+.main .contact {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 7rem;
+}
+.main .contact .leading {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+.main .contact__content {
+  margin-right: 3rem;
+  align-self: center;
+}
+.main .contact__form {
+  background-color: var(--color-black, #151515);
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.main .contact__form svg {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  transform: translateX(175px) scale(2) rotate(-55deg);
+  fill: none;
+  stroke: rgba(255, 209, 67, 0.05);
+}
+.main .contact__groups {
+  display: flex;
+}
+.main .contact__group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+.main .contact__group:not(:last-child) {
+  margin-right: 2rem;
+}
+.main .contact__label {
+  color: var(--color-white, #fff);
+  font-size: 1.25rem;
+  font-family: "Zilla Slab", serif;
+  margin-bottom: 0.5rem;
+}
+.main .contact__input, .main .contact__textarea {
+  color: var(--color-white, #fff);
+  caret-color: var(--color-tertiary, #ffd143);
+  background-color: transparent;
+}
+.main .contact__input:focus, .main .contact__textarea:focus {
+  outline: 2px solid var(--color-tertiary, #ffd143);
+}
+.main .contact__input {
+  border: 0;
+  border-bottom: 1px solid #646161;
+}
+.main .contact__textarea {
+  border: 1px solid #646161;
+}
+.main .contact__button {
+  border: 1px solid var(--color-tertiary, #ffd143);
+  font-size: 1.5rem;
+  font-family: "Zilla Slab", serif;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+}
+.main .contact__button:hover, .main .contact__button:focus {
+  box-shadow: 0 0 10px 0 #ffd143;
+}
+.main .contact__img img {
+  max-height: 800px;
+  height: 100%;
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */
