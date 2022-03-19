@@ -135,14 +135,15 @@ body {
     color: #fff;
     border: 3px solid var(--color-primary, $color-primary);
 
-    &:hover {
-      border-color: $color-primary;
+    &:hover, &:focus {
       box-shadow: 0 0 10px 0 $color-primary;
     }
   }
 }
 
 .bg-title {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   margin-right: 2.5rem;
   font-size: 7.5rem;
   color: rgba(#e6e6e6, 0.05);
@@ -194,8 +195,12 @@ body {
       text-decoration: none;
       transition: all 0.1s;
 
-      &:hover {
+      &:hover, &:focus {
         color: var(--color-primary, $color-primary);
+      }
+      &:focus {
+
+        border-style: solid;
       }
     }
   }
@@ -270,23 +275,18 @@ body {
 
   .portfolio {
     position: relative;
+    overflow-x: visible;
 
     &__top {
       display: flex;
       align-items: flex-end;
       max-height: 560px;
-      // background-image: url("/dist/images/test.svg");
-      // background-repeat: none;
-      // background-size: cover;
-      // // bg
-      // // background-position: center center;
-      // border-bottom: 5px solid var(--color-muted, $color-muted);
 
       img {
         opacity: 0.05;
         position: absolute;
-        // max-height: 650px;
         width: 100%;
+        z-index: -1; // image was overlapping button making it unclickable with mouse
       }
     }
 
@@ -295,6 +295,90 @@ body {
 
       .leading {
         max-width: 700px;
+      }
+    }
+
+    &__gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      // grid-template-rows: repeat(2, 200px);
+    }
+
+    &__item {
+      display: block;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        transition: all 0.35s, outline 0s;
+        display: block;
+        width: 100%;
+      }
+
+      &:hover, &:focus {
+
+        .portfolio__overlay {
+          background-color: rgba(0,0,0,0.75);
+        }
+
+        .portfolio__cta {
+          top: 0;
+          visibility: visible;
+          opacity: 1;
+        }
+
+        img {
+          transform: scale(1.2);
+        }
+
+      }
+
+      &:focus {
+        outline: 5px solid var(--color-primary, $color-primary);
+        z-index: 5;
+      }
+    }
+
+    &__overlay {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      // this z-index corrects an issue of the background-color disappearing
+      // when the image it covers is scaled up on hover
+      z-index: 1; 
+      background-color: rgba(0,0,0,0.5);
+      transition: all 0.35s, outline 0s;
+      overflow: hidden;
+    }
+
+    &__cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 130px;
+      width: 130px;
+      transition: all 0.35s, outline 0s, opacity 0.5s;
+      position: relative;
+      top: 100%;
+      font-size: 1.75rem;
+      border-radius: 50%;
+      opacity: 0;
+      z-index: 6;
+      visibility: hidden;
+      border: 3px solid var(--color-primary, $color-primary);
+      color: var(--color-white, $color-white);
+      box-shadow: 0 0 25px var(--color-primary, $color-primary);
+
+      &:focus {
+        top: 0;
+        opacity: 1;
+        visibility: visible;
       }
     }
   }
@@ -308,6 +392,7 @@ body {
       margin-bottom: 7rem;
     }
     &__card {
+      transition: all 0.35s, outline 0s;
       width: 400px;
       height: 472px;
       padding-top: 1.5rem;
@@ -320,6 +405,34 @@ body {
 
       &:not(:last-child) {
         margin-right: 4rem;
+      }
+
+      &:hover, &:focus {
+        transform: translateY(-2rem);
+      }
+    }
+    &__card--1 {
+      color: var(--color-secondary-shadow, $color-secondary-shadow);
+
+      &:hover, &:focus { 
+        color: var(--color-secondary, $color-secondary);
+        outline: 2px solid currentColor;
+      }
+    }
+    &__card--2 {
+      color: var(--color-primary-shadow, $color-primary-shadow);
+
+      &:hover, &:focus { 
+        color: var(--color-primary, $color-primary);
+        outline: 2px solid currentColor;
+      }
+    }
+    &__card--3 {
+      color: var(--color-tertiary-shadow, $color-tertiary-shadow);
+
+      &:hover, &:focus { 
+        color: var(--color-tertiary, $color-tertiary);
+        outline: 2px solid currentColor;
       }
     }
     &__title {
