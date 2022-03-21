@@ -145,10 +145,10 @@ h1, h2, h3, h4, h5, h6, p {
   text-decoration: underline;
 }
 .btn--lg {
+  width: 50%;
   min-width: 150px;
   max-width: 250px;
-  width: 50%;
-  padding: 0.5rem 0rem;
+  padding: 0.5rem 0;
   font-size: 1.25rem;
 }
 @media only screen and (min-width: 380px) {
@@ -171,10 +171,10 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .bg-title {
-  font-size: 4.5rem;
   margin-top: 3rem;
   margin-right: 0.5rem;
   margin-bottom: 3rem;
+  font-size: 4.5rem;
   color: rgba(230, 230, 230, 0.05);
   text-align: right;
 }
@@ -437,11 +437,11 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .main .skills__cards {
   display: grid;
+  margin-bottom: 4rem;
+  column-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
   justify-items: center;
   row-gap: 4rem;
-  column-gap: 2rem;
-  margin-bottom: 4rem;
 }
 .main .skills__card {
   position: relative;
@@ -554,6 +554,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .main .contact {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding-bottom: 7rem;
 }
@@ -563,11 +564,14 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .main .contact__content {
   align-self: center;
-  margin-right: 3rem;
+  width: 100%;
+  flex: 1;
+  max-width: 600px;
+  margin-bottom: 3rem;
 }
 .main .contact__form {
   position: relative;
-  padding: 3rem 2rem;
+  padding: 1.5rem;
   overflow: hidden;
   background-color: var(--color-black, #151515);
 }
@@ -576,12 +580,18 @@ h1, h2, h3, h4, h5, h6, p {
   right: 0;
   bottom: 0;
   width: 100%;
-  transform: translateX(175px) scale(2) rotate(-55deg);
+  transform: translate(100px, -100px) scale(2) rotate(-55deg);
   fill: none;
   stroke: rgba(255, 209, 67, 0.05);
 }
 .main .contact__groups {
   display: flex;
+  flex-wrap: wrap;
+}
+@media only screen and (min-width: 700px) {
+  .main .contact__groups {
+    flex-wrap: nowrap;
+  }
 }
 .main .contact__group {
   display: flex;
@@ -589,8 +599,10 @@ h1, h2, h3, h4, h5, h6, p {
   width: 100%;
   margin-bottom: 1.5rem;
 }
-.main .contact__group:not(:last-child) {
-  margin-right: 2rem;
+@media only screen and (min-width: 700px) {
+  .main .contact__group:not(:last-child) {
+    margin-right: 2rem;
+  }
 }
 .main .contact__label {
   margin-bottom: 0.5rem;
@@ -623,8 +635,17 @@ h1, h2, h3, h4, h5, h6, p {
 .main .contact__button:hover, .main .contact__button:focus {
   box-shadow: 0 0 10px 0 #ffd143;
 }
+.main .contact__img {
+  justify-self: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
 .main .contact__img img {
   display: block;
+  min-width: 280px;
+  width: 100%;
+  max-width: 600px;
   height: 100%;
   max-height: 800px;
 }
