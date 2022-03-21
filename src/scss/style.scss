@@ -177,12 +177,23 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .bg-title {
+  font-size: 4.5rem;
   margin-top: 3rem;
-  margin-right: 2.5rem;
+  margin-right: 0.5rem;
   margin-bottom: 3rem;
-  font-size: 7.5rem;
   color: rgba(#e6e6e6, 0.05);
   text-align: right;
+
+  @media only screen and (min-width: 380px) {
+    font-size: 6rem;
+  }
+  @media only screen and (min-width: 700px) {
+    font-size: 7.5rem;
+  }
+  @media only screen and (min-width: 1400px) {
+    margin-right: 2.5rem;
+  }
+
 }
 
 .mb-2 { margin-bottom: 1rem; }
@@ -367,8 +378,11 @@ h1, h2, h3, h4, h5, h6, p {
 
     &__gallery {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      // grid-template-rows: repeat(2, 200px);
+      grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+      
+      @media only screen and (min-width: 1400px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     &__item {

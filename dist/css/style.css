@@ -166,12 +166,27 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .bg-title {
+  font-size: 4.5rem;
   margin-top: 3rem;
-  margin-right: 2.5rem;
+  margin-right: 0.5rem;
   margin-bottom: 3rem;
-  font-size: 7.5rem;
   color: rgba(230, 230, 230, 0.05);
   text-align: right;
+}
+@media only screen and (min-width: 380px) {
+  .bg-title {
+    font-size: 6rem;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .bg-title {
+    font-size: 7.5rem;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .bg-title {
+    margin-right: 2.5rem;
+  }
 }
 
 .mb-2 {
@@ -345,7 +360,12 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .main .portfolio__gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+}
+@media only screen and (min-width: 1400px) {
+  .main .portfolio__gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 .main .portfolio__item {
   position: relative;
