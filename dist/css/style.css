@@ -55,10 +55,15 @@ h1, h2, h3, h4, h5, h6, p {
 
 .section-subtitle {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-family: "Zilla Slab", serif;
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--color-white, #fff);
+}
+@media only screen and (min-width: 500px) {
+  .section-subtitle {
+    font-size: 3rem;
+  }
 }
 
 .container, .container-center {
@@ -518,16 +523,34 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .main .about {
   position: relative;
-  padding-top: 14rem;
-  padding-bottom: 14rem;
+  padding-top: 5.125rem;
+  padding-bottom: 5.125rem;
+}
+@media only screen and (min-width: 380px) {
+  .main .about {
+    padding-top: 6.875rem;
+    padding-bottom: 6.875rem;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .main .about {
+    padding-top: 8.625rem;
+    padding-bottom: 8.625rem;
+  }
 }
 .main .about .bg-title {
   position: absolute;
   top: 0;
   right: 0;
   margin-top: 0;
-  font-size: 36.25rem;
+  font-size: 10rem;
   line-height: 0.8;
+  opacity: 0.6;
+}
+@media only screen and (min-width: 500px) {
+  .main .about .bg-title {
+    font-size: 20rem;
+  }
 }
 .main .contact {
   display: flex;
