@@ -11,8 +11,6 @@
 // >
 // >
 
-
-
 // ==================================================================================================== //
 // FONT IMPORTS
 // ==================================================================================================== //
@@ -66,6 +64,10 @@ body {
   background-color: var(--color-dark, $color-dark);
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 0;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -79,28 +81,42 @@ body {
 .section-title {
   margin-top: 0;
   margin-bottom: 2rem;
-  font-size: 3.75rem;
+  font-size: 2.4rem;
+
+  @media only screen and (min-width: 380px) {
+    font-size: 3rem;
+  }
+  @media only screen and (min-width: 500px) {
+    font-size: 3.75rem;
+  }
 }
 
 .section-subtitle {
-  font-size: 3rem;
   margin-top: 0;
   margin-bottom: 2rem;
   font-family: $font-zilla-slab;
+  font-size: 3rem;
   color: var(--color-white, $color-white);
 }
 
 .container, .container-center {
-  // margin-right: auto;
-  // margin-left: auto;
   max-width: 1280px;
   padding-right: 75px;
   padding-left: 75px;
+
+  @media only screen and (max-width: 768px) {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+  @media only screen and (max-width: 500px) {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }
 
 .container-center {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .text-primary { color: var(--color-primary, $color-primary); }
@@ -112,24 +128,44 @@ body {
 .text-white { color: var(--color-white, $color-white); }
 
 .leading {
-  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  font-family: $font-comfortaa;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: var(--color-white, $color-white);
-  font-family: $font-comfortaa;
+
+  @media only screen and (min-width: 380px) {
+    font-size: 1rem;
+  }
+  @media only screen and (min-width: 500px) {
+    font-size: 1.125rem;
+  }
 }
 
 .btn {
+  display: inline-block;
   cursor: pointer;
   background-color: transparent;
   transition: all 0.25s, outline 0s;
-  display: inline-block;
 
   &:focus { text-decoration: underline; }
 
   &--lg {
-    width: 250px;
-    padding: 0.75rem 3rem;
-    font-size: 1.75rem;
+    width: 150px;
+    padding: 0.5rem 1.25rem;
+    font-size: 1.25rem;
+
+    @media only screen and (min-width: 380px) {
+      width: 175px;
+      padding: 0.75 1.75rem;
+      font-size: 1.5rem;
+    }
+
+    @media only screen and (min-width: 500px) {
+      width: 250px;
+      padding: 0.75rem 3rem;
+      font-size: 1.75rem;
+    }
   }
   &--primary {
     color: #fff;
@@ -143,12 +179,15 @@ body {
 
 .bg-title {
   margin-top: 3rem;
-  margin-bottom: 3rem;
   margin-right: 2.5rem;
+  margin-bottom: 3rem;
   font-size: 7.5rem;
   color: rgba(#e6e6e6, 0.05);
   text-align: right;
 }
+
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 2rem; }
 
 // ==================================================================================================== //
 // 
@@ -160,6 +199,10 @@ body {
   min-height: 400px;
   background-color: var(--color-black, $color-black);
   grid-column: 1 / 2;
+
+  @media only screen and (max-width: 868px) {
+    display: none;
+  }
 
   .logo {
     display: flex;
@@ -249,49 +292,74 @@ body {
 
 .main {
   grid-column: 2 / 3;
+  overflow: hidden;
+
+  @media only screen and (max-width: 868px) {
+    grid-column: 1 / 3;
+  }
 
   .intro {
-    padding-top: 125px;
-    padding-bottom: 125px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    @media only screen and (min-width: 1000px) {
+      padding-bottom: 125px;
+    }
+    @media only screen and (min-width: 868px) {
+      padding-top: 125px;
+    }
 
     &__title {
-      font-size: 6.25rem;
+      margin-bottom: 3rem;
+      font-size: 2.7rem;
       font-weight: 400;
       color: var(--color-white, $color-white);
+
+      @media only screen and (min-width: 380px) {
+        font-size: 3.5rem;
+      }
+      @media only screen and (min-width: 500px) {
+        font-size: 4rem;
+      }
+      @media only screen and (min-width: 700px) {
+        font-size: 5rem;
+      }
+      @media only screen and (min-width: 1020px) {
+        font-size: 6.5rem;
+      }
 
       span {
         color: var(--color-primary, $color-primary);
       }
     }
-
-    &__btn {
-      padding: 0.75rem 3rem;
-      font-size: 2.25rem;
-      color: #fff;
-      background-color: transparent;
-      border: 3px solid var(--color-primary, $color-primary);
-    }
   }
 
   .portfolio {
     position: relative;
-    overflow-x: visible;
 
     &__top {
       display: flex;
       align-items: flex-end;
-      max-height: 560px;
+      // max-height: 560px;
+      overflow: hidden;
 
       img {
-        opacity: 0.05;
         position: absolute;
-        width: 100%;
         z-index: -1; // image was overlapping button making it unclickable with mouse
+        display: block;
+        width: 100%;
+        opacity: 0.05;
+
+        @media only screen and (max-width: 1799px) {
+          width: auto;
+          min-height: 500px;
+        }
       }
     }
 
     &__content {
-      padding-top: 12rem;
+      padding-top: 3rem;
+      // padding-top: 12rem;
 
       .leading {
         max-width: 700px;
@@ -305,20 +373,20 @@ body {
     }
 
     &__item {
-      display: block;
       position: relative;
+      display: block;
       overflow: hidden;
 
       img {
-        transition: all 0.35s, outline 0s;
         display: block;
         width: 100%;
+        transition: all 0.35s, outline 0s;
       }
 
       &:hover, &:focus {
 
         .portfolio__overlay {
-          background-color: rgba(0,0,0,0.75);
+          background-color: rgba(0, 0, 0, 0.75);
         }
 
         .portfolio__cta {
@@ -330,55 +398,54 @@ body {
         img {
           transform: scale(1.2);
         }
-
       }
 
       &:focus {
-        outline: 5px solid var(--color-primary, $color-primary);
         z-index: 5;
+        outline: 5px solid var(--color-primary, $color-primary);
       }
     }
 
     &__overlay {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: absolute;
       top: 0;
-      bottom: 0;
       right: 0;
+      bottom: 0;
       left: 0;
       // this z-index corrects an issue of the background-color disappearing
       // when the image it covers is scaled up on hover
-      z-index: 1; 
-      background-color: rgba(0,0,0,0.5);
-      transition: all 0.35s, outline 0s;
-      overflow: hidden;
-    }
-
-    &__cta {
+      z-index: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      height: 130px;
-      width: 130px;
-      transition: all 0.35s, outline 0s, opacity 0.5s;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: all 0.35s, outline 0s;
+    }
+
+    &__cta {
       position: relative;
       top: 100%;
-      font-size: 1.75rem;
-      border-radius: 50%;
-      opacity: 0;
       z-index: 6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 130px;
+      height: 130px;
+      font-size: 1.75rem;
+      color: var(--color-white, $color-white);
+      text-align: center;
       visibility: hidden;
       border: 3px solid var(--color-primary, $color-primary);
-      color: var(--color-white, $color-white);
+      border-radius: 50%;
       box-shadow: 0 0 25px var(--color-primary, $color-primary);
+      opacity: 0;
+      transition: all 0.35s, outline 0s, opacity 0.5s;
 
       &:focus {
         top: 0;
-        opacity: 1;
         visibility: visible;
+        opacity: 1;
       }
     }
   }
@@ -388,20 +455,23 @@ body {
 
     &__cards {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-bottom: 7rem;
+      margin-bottom: 3rem;
     }
     &__card {
-      transition: all 0.35s, outline 0s;
-      width: 400px;
-      height: 472px;
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      min-height: 472px;
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;
-      text-align: center;
-      box-shadow: 0 0 25px 0 currentColor;
-      border-radius: 24px;
+      margin-bottom: 4rem;
       overflow: hidden;
-      position: relative;
+      text-align: center;
+      border-radius: 24px;
+      box-shadow: 0 0 25px 0 currentColor;
+      transition: all 0.35s, outline 0s;
 
       &:not(:last-child) {
         margin-right: 4rem;
@@ -414,7 +484,7 @@ body {
     &__card--1 {
       color: var(--color-secondary-shadow, $color-secondary-shadow);
 
-      &:hover, &:focus { 
+      &:hover, &:focus {
         color: var(--color-secondary, $color-secondary);
         outline: 2px solid currentColor;
       }
@@ -422,7 +492,7 @@ body {
     &__card--2 {
       color: var(--color-primary-shadow, $color-primary-shadow);
 
-      &:hover, &:focus { 
+      &:hover, &:focus {
         color: var(--color-primary, $color-primary);
         outline: 2px solid currentColor;
       }
@@ -430,15 +500,15 @@ body {
     &__card--3 {
       color: var(--color-tertiary-shadow, $color-tertiary-shadow);
 
-      &:hover, &:focus { 
+      &:hover, &:focus {
         color: var(--color-tertiary, $color-tertiary);
         outline: 2px solid currentColor;
       }
     }
     &__title {
-      font-size: 2.5rem;
       margin-top: 0;
       margin-bottom: 2rem;
+      font-size: 2.5rem;
     }
     &__list {
       padding: 0;
@@ -446,35 +516,35 @@ body {
       list-style: none;
     }
     &__item {
-      font-size: 1.25rem;
-      color: var(--color-white, $color-white);
       margin-bottom: 1rem;
       font-family: $font-comfortaa;
+      font-size: 1.25rem;
+      color: var(--color-white, $color-white);
     }
     &__graphic {
       $-dimensions: 225px;
       $-position: -$-dimensions * 0.5;
+      position: absolute;
+      bottom: $-position;
+      left: $-position;
 
       width: $-dimensions;
       height: $-dimensions;
       border: 2px solid currentColor;
       border-radius: 50%;
-      position: absolute;
-      bottom: $-position;
-      left: $-position;
 
       &::after, &::before {
-        content: "";
-        width: $-dimensions;
-        height: $-dimensions;   
         position: absolute;
-        border: 2px solid currentColor;
-        border-radius: 50%;
         bottom: 0;
         left: 0;
+        width: $-dimensions;
+        height: $-dimensions;
+        content: "";
+        border: 2px solid currentColor;
+        border-radius: 50%;
       }
 
-      &::after { 
+      &::after {
         transform: scale(1.15);
       }
       &::before {
@@ -489,11 +559,11 @@ body {
     padding-bottom: 14rem;
 
     .bg-title {
+      position: absolute;
       top: 0;
       right: 0;
       margin-top: 0;
       font-size: 36.25rem;
-      position: absolute;
       line-height: 0.8;
     }
   }
@@ -509,37 +579,36 @@ body {
     }
 
     &__content {
+      align-self: center;
       // width: 100%;
       margin-right: 3rem;
-      align-self: center;
     }
 
     &__form {
-      background-color: var(--color-black, $color-black);
-      padding: 3rem 2rem;
       position: relative;
+      padding: 3rem 2rem;
       overflow: hidden;
+      background-color: var(--color-black, $color-black);
 
       svg {
         position: absolute;
-        width: 100%;
-        bottom: 0;
         right: 0;
+        bottom: 0;
+        width: 100%;
         transform: translateX(175px) scale(2) rotate(-55deg);
         fill: none;
         stroke: rgba($color-tertiary, 0.05);
       }
     }
 
-
     &__groups {
       display: flex;
     }
 
     &__group {
-      width: 100%;
       display: flex;
       flex-direction: column;
+      width: 100%;
       margin-bottom: 1.5rem;
 
       &:not(:last-child) {
@@ -548,10 +617,10 @@ body {
     }
 
     &__label {
-      color: var(--color-white, $color-white);
-      font-size: 1.25rem;
-      font-family: $font-zilla-slab;
       margin-bottom: 0.5rem;
+      font-family: $font-zilla-slab;
+      font-size: 1.25rem;
+      color: var(--color-white, $color-white);
     }
 
     &__input, &__textarea {
@@ -561,7 +630,7 @@ body {
     }
 
     &__input:focus, &__textarea:focus {
-      outline: 2px solid var(--color-tertiary, $color-tertiary)
+      outline: 2px solid var(--color-tertiary, $color-tertiary);
     }
 
     &__input {
@@ -574,11 +643,11 @@ body {
     }
 
     &__button {
-      border: 1px solid var(--color-tertiary, $color-tertiary);
-      font-size: 1.5rem;
-      font-family: $font-zilla-slab;
       display: inline-block;
       padding: 0.5rem 2rem;
+      font-family: $font-zilla-slab;
+      font-size: 1.5rem;
+      border: 1px solid var(--color-tertiary, $color-tertiary);
 
       &:hover, &:focus {
         box-shadow: 0 0 10px 0 $color-tertiary;
@@ -586,11 +655,11 @@ body {
     }
 
     &__img {
-      
+
       img {
-        max-height: 800px;
-        height: 100%;
         display: block;
+        height: 100%;
+        max-height: 800px;
       }
     }
   }

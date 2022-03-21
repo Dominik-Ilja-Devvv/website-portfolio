@@ -23,6 +23,10 @@ body {
   background-color: var(--color-dark, #222223);
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 0;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -36,14 +40,24 @@ body {
 .section-title {
   margin-top: 0;
   margin-bottom: 2rem;
-  font-size: 3.75rem;
+  font-size: 2.4rem;
+}
+@media only screen and (min-width: 380px) {
+  .section-title {
+    font-size: 3rem;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .section-title {
+    font-size: 3.75rem;
+  }
 }
 
 .section-subtitle {
-  font-size: 3rem;
   margin-top: 0;
   margin-bottom: 2rem;
   font-family: "Zilla Slab", serif;
+  font-size: 3rem;
   color: var(--color-white, #fff);
 }
 
@@ -52,10 +66,22 @@ body {
   padding-right: 75px;
   padding-left: 75px;
 }
+@media only screen and (max-width: 768px) {
+  .container, .container-center {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .container, .container-center {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
 
 .container-center {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .text-primary {
@@ -87,25 +113,50 @@ body {
 }
 
 .leading {
-  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  font-family: "Comfortaa", cursive;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: var(--color-white, #fff);
-  font-family: "Comfortaa", cursive;
+}
+@media only screen and (min-width: 380px) {
+  .leading {
+    font-size: 1rem;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .leading {
+    font-size: 1.125rem;
+  }
 }
 
 .btn {
+  display: inline-block;
   cursor: pointer;
   background-color: transparent;
   transition: all 0.25s, outline 0s;
-  display: inline-block;
 }
 .btn:focus {
   text-decoration: underline;
 }
 .btn--lg {
-  width: 250px;
-  padding: 0.75rem 3rem;
-  font-size: 1.75rem;
+  width: 150px;
+  padding: 0.5rem 1.25rem;
+  font-size: 1.25rem;
+}
+@media only screen and (min-width: 380px) {
+  .btn--lg {
+    width: 175px;
+    padding: 0.75 1.75rem;
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .btn--lg {
+    width: 250px;
+    padding: 0.75rem 3rem;
+    font-size: 1.75rem;
+  }
 }
 .btn--primary {
   color: #fff;
@@ -117,11 +168,19 @@ body {
 
 .bg-title {
   margin-top: 3rem;
-  margin-bottom: 3rem;
   margin-right: 2.5rem;
+  margin-bottom: 3rem;
   font-size: 7.5rem;
   color: rgba(230, 230, 230, 0.05);
   text-align: right;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 2rem;
 }
 
 .sidebar {
@@ -130,6 +189,11 @@ body {
   min-height: 400px;
   background-color: var(--color-black, #151515);
   grid-column: 1/2;
+}
+@media only screen and (max-width: 868px) {
+  .sidebar {
+    display: none;
+  }
 }
 .sidebar .logo {
   display: flex;
@@ -203,43 +267,79 @@ body {
 
 .main {
   grid-column: 2/3;
+  overflow: hidden;
+}
+@media only screen and (max-width: 868px) {
+  .main {
+    grid-column: 1/3;
+  }
 }
 .main .intro {
-  padding-top: 125px;
-  padding-bottom: 125px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+@media only screen and (min-width: 1000px) {
+  .main .intro {
+    padding-bottom: 125px;
+  }
+}
+@media only screen and (min-width: 868px) {
+  .main .intro {
+    padding-top: 125px;
+  }
 }
 .main .intro__title {
-  font-size: 6.25rem;
+  margin-bottom: 3rem;
+  font-size: 2.7rem;
   font-weight: 400;
   color: var(--color-white, #fff);
+}
+@media only screen and (min-width: 380px) {
+  .main .intro__title {
+    font-size: 3.5rem;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .main .intro__title {
+    font-size: 4rem;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .main .intro__title {
+    font-size: 5rem;
+  }
+}
+@media only screen and (min-width: 1020px) {
+  .main .intro__title {
+    font-size: 6.5rem;
+  }
 }
 .main .intro__title span {
   color: var(--color-primary, #ff2c6d);
 }
-.main .intro__btn {
-  padding: 0.75rem 3rem;
-  font-size: 2.25rem;
-  color: #fff;
-  background-color: transparent;
-  border: 3px solid var(--color-primary, #ff2c6d);
-}
 .main .portfolio {
   position: relative;
-  overflow-x: visible;
 }
 .main .portfolio__top {
   display: flex;
   align-items: flex-end;
-  max-height: 560px;
+  overflow: hidden;
 }
 .main .portfolio__top img {
-  opacity: 0.05;
   position: absolute;
-  width: 100%;
   z-index: -1;
+  display: block;
+  width: 100%;
+  opacity: 0.05;
+}
+@media only screen and (max-width: 1799px) {
+  .main .portfolio__top img {
+    width: auto;
+    min-height: 500px;
+  }
 }
 .main .portfolio__content {
-  padding-top: 12rem;
+  padding-top: 3rem;
 }
 .main .portfolio__content .leading {
   max-width: 700px;
@@ -249,14 +349,14 @@ body {
   grid-template-columns: repeat(4, 1fr);
 }
 .main .portfolio__item {
-  display: block;
   position: relative;
+  display: block;
   overflow: hidden;
 }
 .main .portfolio__item img {
-  transition: all 0.35s, outline 0s;
   display: block;
   width: 100%;
+  transition: all 0.35s, outline 0s;
 }
 .main .portfolio__item:hover .portfolio__overlay, .main .portfolio__item:focus .portfolio__overlay {
   background-color: rgba(0, 0, 0, 0.75);
@@ -270,63 +370,66 @@ body {
   transform: scale(1.2);
 }
 .main .portfolio__item:focus {
-  outline: 5px solid var(--color-primary, #ff2c6d);
   z-index: 5;
+  outline: 5px solid var(--color-primary, #ff2c6d);
 }
 .main .portfolio__overlay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   left: 0;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: all 0.35s, outline 0s;
-  overflow: hidden;
-}
-.main .portfolio__cta {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  height: 130px;
-  width: 130px;
-  transition: all 0.35s, outline 0s, opacity 0.5s;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.35s, outline 0s;
+}
+.main .portfolio__cta {
   position: relative;
   top: 100%;
-  font-size: 1.75rem;
-  border-radius: 50%;
-  opacity: 0;
   z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  font-size: 1.75rem;
+  color: var(--color-white, #fff);
+  text-align: center;
   visibility: hidden;
   border: 3px solid var(--color-primary, #ff2c6d);
-  color: var(--color-white, #fff);
+  border-radius: 50%;
   box-shadow: 0 0 25px var(--color-primary, #ff2c6d);
+  opacity: 0;
+  transition: all 0.35s, outline 0s, opacity 0.5s;
 }
 .main .portfolio__cta:focus {
   top: 0;
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
 }
 .main .skills__cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 7rem;
+  margin-bottom: 3rem;
 }
 .main .skills__card {
-  transition: all 0.35s, outline 0s;
-  width: 400px;
-  height: 472px;
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  min-height: 472px;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  text-align: center;
-  box-shadow: 0 0 25px 0 currentColor;
-  border-radius: 24px;
+  margin-bottom: 4rem;
   overflow: hidden;
-  position: relative;
+  text-align: center;
+  border-radius: 24px;
+  box-shadow: 0 0 25px 0 currentColor;
+  transition: all 0.35s, outline 0s;
 }
 .main .skills__card:not(:last-child) {
   margin-right: 4rem;
@@ -356,9 +459,9 @@ body {
   outline: 2px solid currentColor;
 }
 .main .skills__title {
-  font-size: 2.5rem;
   margin-top: 0;
   margin-bottom: 2rem;
+  font-size: 2.5rem;
 }
 .main .skills__list {
   padding: 0;
@@ -366,29 +469,29 @@ body {
   list-style: none;
 }
 .main .skills__item {
-  font-size: 1.25rem;
-  color: var(--color-white, #fff);
   margin-bottom: 1rem;
   font-family: "Comfortaa", cursive;
+  font-size: 1.25rem;
+  color: var(--color-white, #fff);
 }
 .main .skills__graphic {
-  width: 225px;
-  height: 225px;
-  border: 2px solid currentColor;
-  border-radius: 50%;
   position: absolute;
   bottom: -112.5px;
   left: -112.5px;
-}
-.main .skills__graphic::after, .main .skills__graphic::before {
-  content: "";
   width: 225px;
   height: 225px;
-  position: absolute;
   border: 2px solid currentColor;
   border-radius: 50%;
+}
+.main .skills__graphic::after, .main .skills__graphic::before {
+  position: absolute;
   bottom: 0;
   left: 0;
+  width: 225px;
+  height: 225px;
+  content: "";
+  border: 2px solid currentColor;
+  border-radius: 50%;
 }
 .main .skills__graphic::after {
   transform: scale(1.15);
@@ -402,11 +505,11 @@ body {
   padding-bottom: 14rem;
 }
 .main .about .bg-title {
+  position: absolute;
   top: 0;
   right: 0;
   margin-top: 0;
   font-size: 36.25rem;
-  position: absolute;
   line-height: 0.8;
 }
 .main .contact {
@@ -419,20 +522,20 @@ body {
   margin-bottom: 2rem;
 }
 .main .contact__content {
-  margin-right: 3rem;
   align-self: center;
+  margin-right: 3rem;
 }
 .main .contact__form {
-  background-color: var(--color-black, #151515);
-  padding: 3rem 2rem;
   position: relative;
+  padding: 3rem 2rem;
   overflow: hidden;
+  background-color: var(--color-black, #151515);
 }
 .main .contact__form svg {
   position: absolute;
-  width: 100%;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  width: 100%;
   transform: translateX(175px) scale(2) rotate(-55deg);
   fill: none;
   stroke: rgba(255, 209, 67, 0.05);
@@ -441,19 +544,19 @@ body {
   display: flex;
 }
 .main .contact__group {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
   margin-bottom: 1.5rem;
 }
 .main .contact__group:not(:last-child) {
   margin-right: 2rem;
 }
 .main .contact__label {
-  color: var(--color-white, #fff);
-  font-size: 1.25rem;
-  font-family: "Zilla Slab", serif;
   margin-bottom: 0.5rem;
+  font-family: "Zilla Slab", serif;
+  font-size: 1.25rem;
+  color: var(--color-white, #fff);
 }
 .main .contact__input, .main .contact__textarea {
   color: var(--color-white, #fff);
@@ -471,19 +574,19 @@ body {
   border: 1px solid #646161;
 }
 .main .contact__button {
-  border: 1px solid var(--color-tertiary, #ffd143);
-  font-size: 1.5rem;
-  font-family: "Zilla Slab", serif;
   display: inline-block;
   padding: 0.5rem 2rem;
+  font-family: "Zilla Slab", serif;
+  font-size: 1.5rem;
+  border: 1px solid var(--color-tertiary, #ffd143);
 }
 .main .contact__button:hover, .main .contact__button:focus {
   box-shadow: 0 0 10px 0 #ffd143;
 }
 .main .contact__img img {
-  max-height: 800px;
-  height: 100%;
   display: block;
+  height: 100%;
+  max-height: 800px;
 }
 
 /*# sourceMappingURL=style.css.map */
