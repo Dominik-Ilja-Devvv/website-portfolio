@@ -284,21 +284,21 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .sidebar {
+  // setting a min-height for the mobile version screws with overflow-y
+  // the desktop version of sidebar is fine to have a min-height
+
   display: flex;
   flex-direction: column;
   position: fixed;
-  // height: 100%;
-  // height: 100vh;
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 2;
-  // min-height: 500px;
   transform: translateX(100%);
   background-color: var(--color-black, $color-black);
   grid-column: 1 / 3;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
   
   &.js-mobile { transition: all 0.75s; }
   
@@ -308,6 +308,8 @@ h1, h2, h3, h4, h5, h6, p {
     grid-column: 1 / 2;
     transform: none;
     width: auto;
+    height: 100vh;
+    min-height: 600px;
   }
 
   .logo {

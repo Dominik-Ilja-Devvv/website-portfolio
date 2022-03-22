@@ -284,7 +284,7 @@ h1, h2, h3, h4, h5, h6, p {
   background-color: var(--color-black, #151515);
   grid-column: 1/3;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
 }
 .sidebar.js-mobile {
   transition: all 0.75s;
@@ -297,6 +297,8 @@ h1, h2, h3, h4, h5, h6, p {
     grid-column: 1/2;
     transform: none;
     width: auto;
+    height: 100vh;
+    min-height: 600px;
   }
 }
 .sidebar .logo {
