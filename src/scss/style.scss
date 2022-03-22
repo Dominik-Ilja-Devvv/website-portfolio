@@ -211,7 +211,12 @@ h1, h2, h3, h4, h5, h6, p {
 
 .js-freeze {
   overflow: hidden;
+  overflow-y: scroll !important;
   position: fixed;
+  height: 100%;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
 }
 
 .mb-2 { margin-bottom: 1rem; }
@@ -284,6 +289,8 @@ h1, h2, h3, h4, h5, h6, p {
 
 .sidebar {
   position: fixed;
+  bottom: 0;
+  right: 0;
   height: 100vh;
   z-index: 9;
   min-height: 400px;
