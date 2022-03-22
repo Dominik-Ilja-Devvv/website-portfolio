@@ -18,7 +18,6 @@
 }
 
 body {
-  height: 200vh;
   font-family: "Rosario", sans-serif;
   background-color: var(--color-dark, #222223);
 }
@@ -277,17 +276,15 @@ h1, h2, h3, h4, h5, h6, p {
   display: flex;
   flex-direction: column;
   position: fixed;
-  height: 100vh;
   top: 0;
   left: 0;
+  bottom: 0;
   z-index: 2;
-  min-height: 600px;
   transform: translateX(100%);
   background-color: var(--color-black, #151515);
   grid-column: 1/3;
   width: 100%;
-  min-height: 600px;
-  overflow-y: auto;
+  overflow: auto;
 }
 .sidebar.js-mobile {
   transition: all 0.75s;
@@ -348,13 +345,13 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .sidebar .social-icons {
   flex: 1;
-  justify-self: end;
   align-self: end;
   display: flex;
   align-items: end;
   justify-content: center;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .sidebar .social-icons svg {
   position: relative;
