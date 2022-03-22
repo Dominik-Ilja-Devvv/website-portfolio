@@ -270,26 +270,27 @@
             inventore ea accusantium qui?
           </p>
 
-          <form class="contact__form">
+          <form class="contact__form" name="contact" method="POST" data-netlify="true">
 
             <div class="contact__group">
-              <label class="contact__label" for="">Name</label>
-              <input class="contact__input" type="text">
+              <label class="contact__label" for="name">Name</label>
+              <input class="contact__input" type="text" id="name" name="name" required>
             </div>
 
             <div class="contact__group">
               <label class="contact__label" for="email">Email</label>
-              <input class="contact__input" type="email">
+              <input class="contact__input" type="email" id="email" name="email" required>
             </div>
 
             <div class="contact__group">
-              <label class="contact__label" for="">Subject</label>
-              <input class="contact__input" type="text">
+              <label class="contact__label" for="subject">Subject</label>
+              <input class="contact__input" type="text" id="subject" name="subject" required>
             </div>
 
             <div class="contact__group">
-              <label class="contact__label" for="">Message</label>
-              <textarea class="contact__textarea" name="" id="" cols="30" rows="10"></textarea>
+              <label class="contact__label" for="message">Message</label>
+              <textarea class="contact__textarea no-resize" name="message" id="message" cols="30" rows="10"
+                required></textarea>
             </div>
 
             <button type="submit" class="contact__button btn text-white">Send Message</button>
