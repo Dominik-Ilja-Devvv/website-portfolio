@@ -212,7 +212,6 @@ h1, h2, h3, h4, h5, h6, p {
   overflow: hidden;
   overflow-y: scroll !important;
   position: fixed;
-  height: 100%;
 }
 
 .mb-2 {
@@ -275,17 +274,20 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   position: fixed;
-  bottom: 0;
-  right: 0;
   height: 100vh;
-  z-index: 9;
-  min-height: 400px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  min-height: 600px;
   transform: translateX(100%);
   background-color: var(--color-black, #151515);
   grid-column: 1/3;
   width: 100%;
   min-height: 600px;
+  overflow-y: auto;
 }
 .sidebar.js-mobile {
   transition: all 0.75s;
@@ -295,9 +297,9 @@ h1, h2, h3, h4, h5, h6, p {
 }
 @media only screen and (min-width: 1200px) {
   .sidebar {
-    width: auto;
     grid-column: 1/2;
     transform: none;
+    width: auto;
   }
 }
 .sidebar .logo {
@@ -315,7 +317,8 @@ h1, h2, h3, h4, h5, h6, p {
 }
 @media only screen and (min-width: 1200px) {
   .sidebar .divider {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+    background-color: var(--color-muted, #333);
   }
 }
 .sidebar .nav__menu {
@@ -344,18 +347,14 @@ h1, h2, h3, h4, h5, h6, p {
   border-style: solid;
 }
 .sidebar .social-icons {
-  position: absolute;
+  flex: 1;
+  justify-self: end;
+  align-self: end;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   width: 100%;
-  bottom: 0.5rem;
-}
-@media only screen and (min-width: 1200px) {
-  .sidebar .social-icons {
-    flex-direction: row;
-    bottom: 0.5rem;
-  }
+  margin-bottom: 0.5rem;
 }
 .sidebar .social-icons svg {
   position: relative;

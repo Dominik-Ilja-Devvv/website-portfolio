@@ -213,10 +213,6 @@ h1, h2, h3, h4, h5, h6, p {
   overflow: hidden;
   overflow-y: scroll !important;
   position: fixed;
-  height: 100%;
-  // left: 0;
-  // right: 0;
-  // bottom: 0;
 }
 
 .mb-2 { margin-bottom: 1rem; }
@@ -288,30 +284,29 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   position: fixed;
-  bottom: 0;
-  right: 0;
   height: 100vh;
-  z-index: 9;
-  min-height: 400px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  min-height: 600px;
   transform: translateX(100%);
   background-color: var(--color-black, $color-black);
   grid-column: 1 / 3;
   width: 100%;
   min-height: 600px;
+  overflow-y: auto;
   
-  &.js-mobile {
-    transition: all 0.75s;
-  }
-
-  &.active {
-    transform: translateX(0);
-  }
+  &.js-mobile { transition: all 0.75s; }
+  
+  &.active { transform: translateX(0); }
   
   @media only screen and (min-width: 1200px) {
-    width: auto;
     grid-column: 1 / 2;
     transform: none;
+    width: auto;
   }
 
   .logo {
@@ -330,12 +325,13 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: transparent;
     
     @media only screen and (min-width: 1200px) {
-      margin-bottom: 100px;
-      
+      margin-bottom: 50px;
+      background-color: var(--color-muted, $color-muted);
     }
    }
 
-  .nav {
+
+   .nav {
 
     &__menu {
       padding: 0;
@@ -372,21 +368,14 @@ h1, h2, h3, h4, h5, h6, p {
   }
 
   .social-icons {
-    position: absolute;
+    flex: 1;
+    justify-self: end;
+    align-self: end;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     width: 100%;
-    // flex-direction: column;
-    // top: 50%;
-    // transform: translateY(-50%);
-    // right: 5px;
-    bottom: 0.5rem;
-
-    @media only screen and (min-width: 1200px) {
-      flex-direction: row;
-      bottom: 0.5rem;
-    }
+    margin-bottom: 0.5rem;
 
     $-link-dimensions: 2.25rem;
     $-svg-dimensions: $-link-dimensions * 0.55;
