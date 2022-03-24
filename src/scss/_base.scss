@@ -1,0 +1,28 @@
+// ------------------------------
+// | Styling for elements that are being directly selected.
+// |
+// | EX: img, h1, etc.
+// ------------------------------
+
+@use "variables" as var;
+
+* { box-sizing: border-box; }
+
+body {
+  // height: 200vh; // TESTING
+  font-family: var.$font-rosario;
+  background-color: var.$color-dark;
+
+  @supports (--css: variables) {
+    background-color: var(--color-dark, var.$color-dark);
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+}

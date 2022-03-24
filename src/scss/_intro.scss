@@ -1,0 +1,45 @@
+@use "variables" as var;
+
+.intro {
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  @media only screen and (min-width: 1000px) {
+    padding-bottom: 125px;
+  }
+  @media only screen and (min-width: 868px) {
+    padding-top: 125px;
+  }
+
+  &__title {
+    margin-bottom: 3rem;
+    font-size: 2.7rem;
+    font-weight: 400;
+    color: var.$color-white;
+
+    @supports (--css: variables) {
+      color: var(--color-white, var.$color-white);
+    }
+
+    @media only screen and (min-width: 380px) {
+      font-size: 3.5rem;
+    }
+    @media only screen and (min-width: 500px) {
+      font-size: 4rem;
+    }
+    @media only screen and (min-width: 700px) {
+      font-size: 5.5rem;
+    }
+    @media only screen and (min-width: 900px) {
+      font-size: 6.5rem;
+    }
+
+    span {
+      color: var.$color-primary;
+
+      @supports (--css: variables) {
+        color: var(--color-primary, var.$color-primary);
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+// TODO:
+// --------------------
+// > 1. CONDENSE FONTS INTO ONE REQUEST
+// > 2. REMOVE FONT TYPES NOT BEING USED
+
+// ------------------------------
+// | Contains all CSS Custom Variables, SASS Variables, & Font Imports
+// ------------------------------
+
+// ==================================================================================================== //
+// FONT IMPORTS
+// ==================================================================================================== //
+@import url("https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+// ==================================================================================================== //
+// VARIABLES
+// ==================================================================================================== //
+
+// FONTS
+// ================================================== //
+$font-comfortaa: "Comfortaa", cursive;
+$font-rosario: "Rosario", sans-serif;
+$font-zilla-slab: "Zilla Slab", serif;
+
+// COLORS
+// ================================================== //
+
+// Used for opacity in RGBA Colors
+$-shadow: 0.25;
+$-faded: 0.5;
+
+$color-bella-dark: #6b533d;
+$color-bella: #89715b;
+$color-black: #151515;
+$color-dark: #222223;
+$color-muted: #333;
+$color-primary: #ff2c6d;
+$color-primary-faded: rgba($color-primary, $-faded);
+$color-primary-shadow: rgba($color-primary, $-shadow);
+$color-secondary: #19f9d8;
+$color-secondary-shadow: rgba($color-secondary, $-shadow);
+$color-tertiary: #ffd143;
+$color-tertiary-shadow: rgba($color-tertiary, $-shadow);
+$color-white: #fff;
+
+:root {
+  --color-bella-dark: #{$color-bella-dark};
+  --color-bella: #{$color-bella};
+  --color-black: #{$color-black};
+  --color-dark: #{$color-dark};
+  --color-muted: #{$color-muted};
+  --color-primary-faded: #{$color-primary-faded};
+  --color-primary: #{$color-primary};
+  --color-secondary-shadow: #{$color-secondary-shadow};
+  --color-secondary: #{$color-secondary};
+  --color-tertiary: #{$color-tertiary};
+  --color-white: #{$color-white};
+  --font-comfortaa: #{$font-comfortaa + ""};
+  --font-rosario: #{$font-rosario + ""};
+  --font-zilla-slab: #{$font-zilla-slab + ""};
+}

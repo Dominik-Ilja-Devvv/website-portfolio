@@ -1,6 +1,7 @@
 // TODO:
 // --------------------
 // > 1. ADD Focus and hover states to all interactable elements
+// > 2. Import partial files into main file
 // >
 // >
 // >
@@ -9,307 +10,66 @@
 // >
 // >
 // >
-// >
 
-// ==================================================================================================== //
-// FONT IMPORTS
-// ==================================================================================================== //
-@import url("https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
-$font-rosario: "Rosario", sans-serif;
-
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
-$font-comfortaa: "Comfortaa", cursive;
-
-@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
-$font-zilla-slab: "Zilla Slab", serif;
-
-// ==================================================================================================== //
-// VARIABLES
-// ==================================================================================================== //
-$-shadow: 0.25;
-$-faded: 0.5;
-
-$color-white: #fff;
-$color-black: #151515;
-$color-dark: #222223;
-$color-muted: #333;
-$color-primary: #ff2c6d;
-$color-primary-faded: rgba($color-primary, $-faded);
-$color-primary-shadow: rgba($color-primary, $-shadow);
-$color-secondary: #19f9d8;
-$color-secondary-shadow: rgba($color-secondary, $-shadow);
-$color-tertiary: #ffd143;
-$color-tertiary-shadow: rgba($color-tertiary, $-shadow);
-
-:root {
-  --color-white: #{$color-white};
-  --color-black: #{$color-black};
-  --color-dark: #{$color-dark};
-  --color-muted: #{$color-muted};
-  --color-primary: #{$color-primary};
-  --color-primary-faded: #{$color-primary-faded};
-  --color-secondary: #{$color-secondary};
-  --color-secondary-shadow: #{$color-secondary-shadow};
-  --color-tertiary: #{$color-tertiary};
-}
-
-// ==================================================================================================== //
-// UTILITIES & GLOBAL STYLES
-// ==================================================================================================== //
-* { box-sizing: border-box; }
-
-body {
-  // height: 200vh; // TESTING
-  font-family: $font-rosario;
-  background-color: var(--color-dark, $color-dark);
-}
-
-h1, h2, h3, h4, h5, h6, p {
-  margin-top: 0;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-}
-
-.divider {
-  height: 2px;
-  background-color: var(--color-muted, $color-muted);
-}
-
-.section-title {
-  margin-top: 0;
-  margin-bottom: 2rem;
-  font-size: 2.2rem;
-
-  @media only screen and (min-width: 380px) {
-    font-size: 2.5rem;
-  }
-  @media only screen and (min-width: 500px) {
-    font-size: 3rem;
-  }
-  @media only screen and (min-width: 700px) {
-    font-size: 3.75rem;
-  }
-}
-
-.section-subtitle {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-family: $font-zilla-slab;
-  font-size: 1.8rem;
-  color: var(--color-white, $color-white);
-
-  @media only screen and (min-width: 500px) {
-    font-size: 2.75rem;
-  }
-  @media only screen and (min-width: 700px) {
-    font-size: 3rem;
-  }
-}
-
-.container, .container-center {
-  max-width: 1280px;
-  padding-right: 10px;
-  padding-left: 10px;
-
-  @media only screen and (min-width: 500px) {
-    padding-right: 25px;
-    padding-left: 25px;
-  }
-  @media only screen and (min-width: 768px) {
-    padding-right: 50px;
-    padding-left: 50px;
-  }
-}
-
-.container-center {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.text-primary { color: var(--color-primary, $color-primary); }
-.text-secondary { color: var(--color-secondary, $color-secondary); }
-.text-tertiary { color: var(--color-tertiary, $color-tertiary); }
-.text-primary-shadow { color: var(--color-primary-shadow, $color-primary-shadow); }
-.text-secondary-shadow { color: var(--color-secondary-shadow, $color-secondary-shadow); }
-.text-tertiary-shadow { color: var(--color-tertiary-shadow, $color-tertiary-shadow); }
-.text-white { color: var(--color-white, $color-white); }
-
-.leading {
-  margin-bottom: 2rem;
-  font-family: $font-comfortaa;
-  font-size: 0.9375rem;
-  line-height: 1.4;
-  color: var(--color-white, $color-white);
-
-  @media only screen and (min-width: 380px) {
-    font-size: 1rem;
-  }
-  @media only screen and (min-width: 500px) {
-    font-size: 1.125rem;
-  }
-}
-
-.btn {
-  display: inline-block;
-  cursor: pointer;
-  background-color: transparent;
-  transition: all 0.25s, outline 0s;
-
-  &:focus { text-decoration: underline; }
-
-  &--lg {
-    width: 50%;
-    min-width: 150px;
-    max-width: 250px;
-    padding: 0.5rem 0;
-    font-size: 1.25rem;
-
-    @media only screen and (min-width: 380px) {
-      padding: 0.75rem 0;
-      font-size: 1.5rem;
-    }
-
-    @media only screen and (min-width: 500px) {
-      font-size: 1.75rem;
-    }
-  }
-  &--primary {
-    color: #fff;
-    border: 3px solid var(--color-primary, $color-primary);
-
-    &:hover, &:focus {
-      box-shadow: 0 0 10px 0 $color-primary;
-    }
-  }
-}
-
-.bg-title {
-  margin-top: 3rem;
-  margin-right: 0.5rem;
-  margin-bottom: 3rem;
-  font-size: 4.5rem;
-  color: rgba(#e6e6e6, 0.05);
-  text-align: right;
-
-  @media only screen and (min-width: 380px) {
-    font-size: 6rem;
-  }
-  @media only screen and (min-width: 700px) {
-    font-size: 7.5rem;
-  }
-  @media only screen and (min-width: 1400px) {
-    margin-right: 2.5rem;
-  }
-}
-
-.no-resize {
-  resize: none;
-}
-
-.js-freeze {
-  overflow: hidden;
-  overflow-y: scroll !important;
-  position: fixed;
-}
-
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 2rem; }
+@use "variables" as var;
+@use "base";
+@use "components";
+@use "js";
+@use "utilities";
+@use "intro";
 
 // ==================================================================================================== //
 // LAYOUT
 // ==================================================================================================== //
 
-.nav-toggle {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 100;
-  display: block;
+.layout {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  background-color: rgba($color-muted, 0.7);
-  border-radius: 4px;
-  border: none;
 
-  @media only screen and (min-width: 1200px) {
-    display: none;
-  }
+  // :first-child {
+  //   width: 200px;
+  // }
+  // :not(:first-child) {
+  //   flex-grow: 1;
+  // }
 
-  &:focus, &:hover, &.active {
-    .line {
-      background-color: var(--color-primary, $color-primary);
-    }
-  }
-  &:focus {
-    outline: 2px solid var(--color-primary, $color-primary);
-  }
-
-  .line {
-    position: absolute;
-    width: 60%;
-    height: 3px;
-    background-color: var(--color-white, $color-white);
-    transition: all 0.35s, outline 0s;
-
-    $-line-height: 10px;
-
-    &--1 {
-      transform: translateY(-$-line-height);
-    }
-    &--3 {
-      transform: translateY($-line-height);
-    }
-  }
-
-  &.active {
-
-    .line--1 {
-      transform: translateY(0) rotate(135deg);
-    }
-    .line--2 {
-      transform: scale(0);
-    }
-    .line--3 {
-      transform: translateY(0) rotate(-135deg);
-    }
+  @supports(display: grid) {
+    display: grid;
+    grid-template-columns: 200px 1fr;
   }
 }
 
 .sidebar {
-  // setting a min-height for the mobile version screws with overflow-y
-  // the desktop version of sidebar is fine to have a min-height
-
-  display: flex;
-  flex-direction: column;
   position: fixed;
   top: 0;
-  left: 0;
   bottom: 0;
+  left: 0;
   z-index: 2;
-  transform: translateX(100%);
-  background-color: var(--color-black, $color-black);
-  grid-column: 1 / 3;
+  // setting a min-height for the mobile version screws with overflow-y
+  // the desktop version of sidebar is fine to have a min-height
+  // width: 200px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   overflow-y: auto;
-  
+  background-color: var.$color-black;
+  transform: translateX(100%);
+  grid-column: 1 / 3;
+
+  @supports (--css: variabels) {
+    background-color: var(--color-black, var.$color-black);
+  }
+
   &.js-mobile { transition: all 0.75s; }
-  
+
   &.active { transform: translateX(0); }
-  
+
   @media only screen and (min-width: 1200px) {
-    grid-column: 1 / 2;
-    transform: none;
-    width: auto;
+    width: 200px;
     height: 100vh;
     min-height: 600px;
+    transform: none;
+    grid-column: 1 / 2;
   }
 
   .logo {
@@ -326,15 +86,18 @@ h1, h2, h3, h4, h5, h6, p {
   .divider {
     margin-bottom: 15px;
     background-color: transparent;
-    
+
     @media only screen and (min-width: 1200px) {
       margin-bottom: 50px;
-      background-color: var(--color-muted, $color-muted);
+      background-color: var.$color-muted;
+
+      @supports (--css: variables) {
+        background-color: var(--color-muted, var.$color-muted);
+      }
     }
-   }
+  }
 
-
-   .nav {
+  .nav {
 
     &__menu {
       padding: 0;
@@ -343,21 +106,24 @@ h1, h2, h3, h4, h5, h6, p {
     }
     &__item {
       text-align: center;
-
     }
     &__link {
+      display: inline-block;
+      width: 100%;
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;
-      display: inline-block;
       font-size: 1.5rem;
       color: #fff;
       text-decoration: none;
       transition: all 0.1s;
-      width: 100%;
 
       &:hover, &:focus {
-        color: var(--color-primary, $color-primary);
-        background-color: rgba($color-muted, 0.1);
+        color: var.$color-primary;
+        background-color: rgba(var.$color-muted, 0.1);
+
+        @supports (--css: variables) {
+          color: var(--color-primary, var.$color-primary);
+        }
       }
       &:focus {
 
@@ -367,10 +133,10 @@ h1, h2, h3, h4, h5, h6, p {
   }
 
   .social-icons {
-    flex: 1;
-    align-self: end;
     display: flex;
+    flex: 1;
     align-items: end;
+    align-self: end;
     justify-content: center;
     width: 100%;
     margin-top: 2rem;
@@ -385,7 +151,11 @@ h1, h2, h3, h4, h5, h6, p {
       width: $-svg-dimensions;
       height: $-svg-dimensions;
       transition: all 0.35s;
-      fill: var(--color-primary-faded, $color-primary-faded);
+      fill: var.$color-primary-faded;
+
+      @supports (--css: variables) {
+        fill: var(--color-primary-faded, var.$color-primary-faded);
+      }
     }
 
     .link {
@@ -397,7 +167,7 @@ h1, h2, h3, h4, h5, h6, p {
       text-decoration: none;
       background-color: #222223;
       border-radius: 50%;
-      transition: all 0.35s, outline 0;
+      transition: all 5s, outline 0;
 
       &:not(:last-child) {
         // margin-bottom: 1rem;
@@ -409,53 +179,30 @@ h1, h2, h3, h4, h5, h6, p {
       }
 
       &:hover svg {
-        fill: var(--color-primary, $color-primary);
+        fill: var.$color-primary;
+
+        @supports (--css: variables) {
+          fill: var(--color-primary, var.$color-primary);
+        }
       }
     }
   }
 }
 
 .main {
-  grid-column: 1 / 3;
+  margin-left: auto;
+  width: 100%;
   overflow: hidden;
-
+  
   @media only screen and (min-width: 1200px) {
-    grid-column: 2 / 3;
+    width: calc(100% - 200px);
   }
 
-  .intro {
-    padding-top: 100px;
-    padding-bottom: 100px;
+  @supports(display: grid) {
+    grid-column: 1 / 3;
 
-    @media only screen and (min-width: 1000px) {
-      padding-bottom: 125px;
-    }
-    @media only screen and (min-width: 868px) {
-      padding-top: 125px;
-    }
-
-    &__title {
-      margin-bottom: 3rem;
-      font-size: 2.7rem;
-      font-weight: 400;
-      color: var(--color-white, $color-white);
-
-      @media only screen and (min-width: 380px) {
-        font-size: 3.5rem;
-      }
-      @media only screen and (min-width: 500px) {
-        font-size: 4rem;
-      }
-      @media only screen and (min-width: 700px) {
-        font-size: 5.5rem;
-      }
-      @media only screen and (min-width: 900px) {
-        font-size: 6.5rem;
-      }
-
-      span {
-        color: var(--color-primary, $color-primary);
-      }
+    @media only screen and (min-width: 1200px) {
+      grid-column: 2 / 3;
     }
   }
 
@@ -470,15 +217,15 @@ h1, h2, h3, h4, h5, h6, p {
 
       img {
         position: absolute;
+        bottom: 0;
         z-index: -1; // image was overlapping button making it unclickable with mouse
         display: block;
         width: 100%;
         opacity: 0.05;
 
-        @media only screen and (max-width: 1799px) {
-          width: auto;
-          min-height: 500px;
-        }
+        // @media only screen and (max-width: 1799px) {
+        //   min-height: 500px;
+        // }
       }
     }
 
@@ -521,6 +268,7 @@ h1, h2, h3, h4, h5, h6, p {
           top: 0;
           visibility: visible;
           opacity: 1;
+          transform: scale(1);
         }
 
         img {
@@ -530,7 +278,11 @@ h1, h2, h3, h4, h5, h6, p {
 
       &:focus {
         z-index: 5;
-        outline: 5px solid var(--color-primary, $color-primary);
+        outline: 5px solid var.$color-primary;
+
+        @supports (--css: variables) {
+          outline: 5px solid var(--color-primary, var.$color-primary);
+        }
       }
     }
 
@@ -553,7 +305,6 @@ h1, h2, h3, h4, h5, h6, p {
 
     &__cta {
       position: relative;
-      top: 100%;
       z-index: 6;
       display: flex;
       align-items: center;
@@ -561,19 +312,27 @@ h1, h2, h3, h4, h5, h6, p {
       width: 130px;
       height: 130px;
       font-size: 1.75rem;
-      color: var(--color-white, $color-white);
+      color: var.$color-white;
       text-align: center;
       visibility: hidden;
-      border: 3px solid var(--color-primary, $color-primary);
+      border: 3px solid var.$color-primary;
       border-radius: 50%;
-      box-shadow: 0 0 25px var(--color-primary, $color-primary);
+      box-shadow: 0 0 25px var.$color-primary;
       opacity: 0;
       transition: all 0.35s, outline 0s, opacity 0.5s;
+      transform: scale(0);
+
+      @supports (--css: variables) {
+        color: var(--color-white, var.$color-white);
+        border: 3px solid var(--color-primary, var.$color-primary);
+        box-shadow: 0 0 25px var(--color-primary, var.$color-primary);
+      }
 
       &:focus {
         top: 0;
         visibility: visible;
         opacity: 1;
+        transform: scale(1);
       }
     }
   }
@@ -581,61 +340,88 @@ h1, h2, h3, h4, h5, h6, p {
   .skills {
 
     &__cards {
-      display: grid;
-      margin-bottom: 4rem;
-      column-gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
-      justify-items: center;
-      row-gap: 4rem;
-      // display: flex;
-      // flex-wrap: wrap;
-      // justify-content: center;
-      // margin-bottom: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-right: -4rem;
+      
+      @supports(display: grid) and (row-gap: 4rem) {
+        display: grid;
+        column-gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+        justify-items: center;
+        row-gap: 4rem;
+      }
     }
     &__card {
+      margin-right: 4rem;
+      margin-bottom: 4rem;
+
       position: relative;
       width: 100%;
       max-width: 300px;
       min-height: 472px;
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;
-      // margin-bottom: 4rem;
       overflow: hidden;
       text-align: center;
       border-radius: 24px;
       box-shadow: 0 0 25px 0 currentColor;
       transition: all 0.35s, outline 0s;
 
-      // &:not(:last-child) {
-      //   margin-right: 4rem;
-      // }
-
       &:hover, &:focus {
         transform: translateY(-2rem);
       }
     }
     &__card--1 {
-      color: var(--color-secondary-shadow, $color-secondary-shadow);
+      color: var.$color-secondary-shadow;
+
+      @supports (--css: variables) {
+        color: var(--color-secondary-shadow, var.$color-secondary-shadow);
+      }
 
       &:hover, &:focus {
-        color: var(--color-secondary, $color-secondary);
-        outline: 2px solid currentColor;
+        color: var.$color-secondary;
+        border: 2px solid currentColor;
+        outline: 0;
+
+        @supports (--css: variables) {
+          color: var(--color-secondary, var.$color-secondary);
+        }
       }
     }
     &__card--2 {
-      color: var(--color-primary-shadow, $color-primary-shadow);
+      color: var.$color-primary-shadow;
+
+      @supports (--css: variables) {
+        color: var(--color-primary-shadow, var.$color-primary-shadow);
+      }
 
       &:hover, &:focus {
-        color: var(--color-primary, $color-primary);
-        outline: 2px solid currentColor;
+        color: var.$color-primary;
+        border: 2px solid currentColor;
+        outline: 0;
+
+        @supports (--css: variables) {
+          color: var(--color-primary, var.$color-primary);
+        }
       }
     }
     &__card--3 {
-      color: var(--color-tertiary-shadow, $color-tertiary-shadow);
+      color: var.$color-tertiary-shadow;
+
+      @supports (--css: variables) {
+        color: var(--color-tertiary-shadow, var.$color-tertiary-shadow);
+      }
 
       &:hover, &:focus {
-        color: var(--color-tertiary, $color-tertiary);
-        outline: 2px solid currentColor;
+        color: var.$color-tertiary;
+        border: 2px solid currentColor;
+        outline: 0;
+
+        @supports (--css: variables) {
+          color: var(--color-tertiary, var.$color-tertiary);
+        }
       }
     }
     &__title {
@@ -650,13 +436,12 @@ h1, h2, h3, h4, h5, h6, p {
     }
     &__item {
       margin-bottom: 1rem;
-      font-family: $font-comfortaa;
+      font-family: var.$font-comfortaa;
       font-size: 1.25rem;
-      color: var(--color-white, $color-white);
     }
     &__graphic {
       $-dimensions: 225px;
-      $-position: -$-dimensions * 0.5;
+      $-position: -($-dimensions * 0.5);
       position: absolute;
       bottom: $-position;
       left: $-position;
@@ -745,7 +530,7 @@ h1, h2, h3, h4, h5, h6, p {
       padding: 1.5rem;
       // padding: 3rem 2rem; // larger screens
       overflow: hidden;
-      background-color: var(--color-black, $color-black);
+      background-color: var(--color-black, var.$color-black);
 
       svg {
         position: absolute;
@@ -754,17 +539,17 @@ h1, h2, h3, h4, h5, h6, p {
         width: 100%;
         transform: translate(175px, -100px) scale(2.2) rotate(-55deg);
         fill: none;
-        stroke: rgba($color-tertiary, 0.05);
+        stroke: rgba(var.$color-tertiary, 0.05);
       }
     }
 
     &__group {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       width: 100%;
       margin-bottom: 1.5rem;
-      z-index: 1;
-      position: relative;
 
       @media only screen and (min-width: 1000px) {
         &:not(:last-child) {
@@ -775,19 +560,19 @@ h1, h2, h3, h4, h5, h6, p {
 
     &__label {
       margin-bottom: 0.5rem;
-      font-family: $font-zilla-slab;
+      font-family: var.$font-zilla-slab;
       font-size: 1.25rem;
-      color: var(--color-white, $color-white);
+      color: var(--color-white, var.$color-white);
     }
 
     &__input, &__textarea {
-      color: var(--color-white, $color-white);
+      color: var(--color-white, var.$color-white);
       background-color: transparent;
-      caret-color: var(--color-tertiary, $color-tertiary);
+      caret-color: var(--color-tertiary, var.$color-tertiary);
     }
 
     &__input:focus, &__textarea:focus {
-      outline: 2px solid var(--color-tertiary, $color-tertiary);
+      outline: 2px solid var(--color-tertiary, var.$color-tertiary);
     }
 
     &__input {
@@ -803,12 +588,12 @@ h1, h2, h3, h4, h5, h6, p {
       z-index: 1;
       display: inline-block;
       padding: 0.5rem 2rem;
-      font-family: $font-zilla-slab;
+      font-family: var.$font-zilla-slab;
       font-size: 1.5rem;
-      border: 1px solid var(--color-tertiary, $color-tertiary);
+      border: 1px solid var(--color-tertiary, var.$color-tertiary);
 
       &:hover, &:focus {
-        box-shadow: 0 0 10px 0 $color-tertiary;
+        box-shadow: 0 0 10px 0 var.$color-tertiary;
       }
     }
 
@@ -833,7 +618,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .footer {
   padding: 1rem;
-  background-color: var(--color-black, $color-black);
+  background-color: var(--color-black, var.$color-black);
   grid-column: 1 / -1;
 
   @media only screen and (min-width: 1200px) {
@@ -855,7 +640,7 @@ h1, h2, h3, h4, h5, h6, p {
       width: $-svg-dimensions;
       height: $-svg-dimensions;
       transition: all 0.35s;
-      fill: var(--color-primary-faded, $color-primary-faded);
+      fill: var(--color-primary-faded, var.$color-primary-faded);
     }
 
     .link {
@@ -874,7 +659,7 @@ h1, h2, h3, h4, h5, h6, p {
       }
 
       &:hover svg {
-        fill: var(--color-primary, $color-primary);
+        fill: var(--color-primary, var.$color-primary);
       }
     }
   }

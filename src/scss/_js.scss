@@ -1,0 +1,9 @@
+// ------------------------------
+// | Contains classes that are added to the page through JavaScript
+// ------------------------------
+
+.js-freeze {
+  position: fixed;
+  overflow: hidden;
+  overflow-y: scroll !important;
+}

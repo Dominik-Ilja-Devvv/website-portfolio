@@ -1,0 +1,193 @@
+// TODO:
+// --------------------
+// > 1. Create Sass Variables for sizing. Would go with margin, padding, etc.
+
+@use "variables" as var;
+
+// ==================================================================================================== //
+// C
+// ==================================================================================================== //
+.container, .container-center {
+  max-width: 1280px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  @media only screen and (min-width: 500px) {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+  @media only screen and (min-width: 768px) {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+
+.container-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// ==================================================================================================== //
+// D
+// ==================================================================================================== //
+.divider {
+  height: 2px;
+  background-color: var(--color-muted, var.$color-muted);
+}
+
+// ==================================================================================================== //
+// L
+// ==================================================================================================== //
+.leading {
+  margin-bottom: 2rem;
+  font-family: var.$font-comfortaa;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var.$color-white;
+  
+  @supports(--css: variables) {
+    font-family: var(--font-comfortaa, var.$font-comfortaa);
+    color: var(--color-white, var.$color-white);
+    
+  }
+
+  @media only screen and (min-width: 380px) {
+    font-size: 1rem;
+  }
+  @media only screen and (min-width: 500px) {
+    font-size: 1.125rem;
+  }
+}
+
+// ==================================================================================================== //
+// M
+// ==================================================================================================== //
+.mb-2 { margin-bottom: 1rem; }
+.mb-2-5 { margin-bottom: 1.5rem; }
+.mb-3 { margin-bottom: 2rem; }
+.mt-3 { margin-top: 2rem; }
+.mt-10 { margin-top: 6.25rem; }
+.my-10 { margin-top: 6.25rem; margin-bottom: 6.25rem; }
+
+// ==================================================================================================== //
+// N
+// ==================================================================================================== //
+.no-resize { resize: none; }
+
+// ==================================================================================================== //
+// P
+// ==================================================================================================== //
+.py-10 { padding-top: 6.25rem; padding-bottom: 6.25rem; }
+
+// ==================================================================================================== //
+// T
+// ==================================================================================================== //
+.text-center { text-align: center; }
+.title-lg {
+  margin-bottom: 3rem;
+  font-size: 2.7rem;
+  font-weight: 400;
+  color: var(--color-white, var.$color-white);
+
+  @media only screen and (min-width: 380px) {
+    font-size: 3.5rem;
+  }
+  @media only screen and (min-width: 500px) {
+    font-size: 4rem;
+  }
+  @media only screen and (min-width: 700px) {
+    font-size: 5.5rem;
+  }
+  @media only screen and (min-width: 900px) {
+    font-size: 6.5rem;
+  }
+}
+.text-primary {
+  color: var.$color-primary !important;
+
+  @supports (--css: variables) {
+    color: var(--color-primary, var.$color-primary) !important;
+  }
+}
+.text-primary-shadow {
+  color: var.$color-primary-shadow !important;
+
+  @supports (--css: variables) {
+    color: var(--color-primary-shadow, var.$color-primary-shadow) !important;
+  }
+}
+.text-secondary {
+  color: var.$color-secondary !important;
+
+  @supports (--css: variables) {
+    color: var(--color-secondary, var.$color-secondary) !important;
+  }
+}
+.text-secondary-shadow {
+  color: var.$color-secondary-shadow !important;
+
+  @supports (--css: variables) {
+    color: var(--color-secondary-shadow, var.$color-secondary-shadow) !important;
+  }
+}
+.title-section {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+
+  color: var.$color-white;
+  
+  @supports(--css: variables) {
+    color: var(--color-white, var.$color-white);
+  }
+
+  @media only screen and (min-width: 380px) {
+    font-size: 2.5rem;
+  }
+  @media only screen and (min-width: 500px) {
+    font-size: 3rem;
+  }
+  @media only screen and (min-width: 700px) {
+    font-size: 3.75rem;
+  }
+}
+.title-subsection {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-family: var.$font-zilla-slab;
+  font-size: 1.8rem;
+  color: var.$color-white;
+  
+  @supports(--css: variables) {
+    font-family: var(--font-zilla-slab, var.$font-zilla-slab);
+    color: var(--color-white, var.$color-white);
+  }
+
+  @media only screen and (min-width: 500px) {
+    font-size: 2.75rem;
+  }
+  @media only screen and (min-width: 700px) {
+    font-size: 3rem;
+  }
+}
+.text-tertiary {
+  color: var.$color-tertiary !important;
+
+  @supports (--css: variables) {
+    color: var(--color-tertiary, var.$color-tertiary) !important;
+  }
+}
+.text-tertiary-shadow {
+  color: var.$color-tertiary-shadow !important;
+
+  @supports (--css: variables) {
+    color: var(--color-tertiary-shadow, var.$color-tertiary-shadow) !important;
+  }
+}
+.text-white {
+  color: var.$color-white !important;
+
+  @supports (--css: variables) {
+    color: var(--color-white, var.$color-white) !important;
+  }
+}
