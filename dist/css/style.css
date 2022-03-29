@@ -23,12 +23,13 @@
 }
 
 body {
+  width: 100%;
   font-family: "Rosario", sans-serif;
   background-color: #222223;
 }
 @supports (--css: variables) {
   body {
-    background-color: var(--color-dark, #222223);
+    background-color: var(--color-dark);
   }
 }
 
