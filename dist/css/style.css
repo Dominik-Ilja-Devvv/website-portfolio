@@ -346,6 +346,10 @@ img {
   padding-bottom: 6.25rem;
 }
 
+.relative {
+  position: relative;
+}
+
 .text-center {
   text-align: center;
 }
@@ -777,107 +781,138 @@ img {
   }
 }
 
-@supports (display: grid) {
-  .layout {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-  }
-}
-
-.portfolio {
-  position: relative;
-}
 .portfolio__top {
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
+  position: relative;
 }
 .portfolio__top img {
   position: absolute;
   bottom: 0;
   z-index: -1;
-  display: block;
-  width: 100%;
+  width: auto;
+  height: 31.25rem;
   opacity: 0.05;
 }
+@media only screen and (min-width: 112.5rem) {
+  .portfolio__top img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .portfolio__content {
   padding-top: 3rem;
 }
 .portfolio__content .leading {
   max-width: 700px;
 }
-.portfolio__gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+
+.portfolio__gallery:after {
+  content: "";
+  display: table;
+  clear: both;
 }
-@media only screen and (min-width: 1400px) {
-  .portfolio__gallery {
-    grid-template-columns: repeat(4, 1fr);
+.portfolio__gallery > * {
+  float: left;
+  width: 100%;
+}
+@media only screen and (min-width: 700px) {
+  .portfolio__gallery > * {
+    width: 50%;
   }
 }
+@media only screen and (min-width: 900px) {
+  .portfolio__gallery > * {
+    width: 33.333333%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .portfolio__gallery > * {
+    width: 25%;
+  }
+}
+@supports (display: grid) {
+  .portfolio__gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  }
+  .portfolio__gallery > * {
+    width: 100%;
+  }
+  @media only screen and (min-width: 1400px) {
+    .portfolio__gallery {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
 .portfolio__item {
   position: relative;
   display: block;
   overflow: hidden;
 }
 .portfolio__item img {
-  display: block;
-  width: 100%;
   transition: all 0.35s, outline 0s;
 }
 .portfolio__item:hover .portfolio__overlay, .portfolio__item:focus .portfolio__overlay {
   background-color: rgba(0, 0, 0, 0.75);
 }
 .portfolio__item:hover .portfolio__cta, .portfolio__item:focus .portfolio__cta {
-  top: 0;
   visibility: visible;
   opacity: 1;
-  transform: scale(1);
+}
+@supports (display: flex) {
+  .portfolio__item:hover .portfolio__cta, .portfolio__item:focus .portfolio__cta {
+    transform: scale(1);
+  }
 }
 .portfolio__item:hover img, .portfolio__item:focus img {
   transform: scale(1.2);
 }
 .portfolio__item:focus {
-  z-index: 5;
   outline: 5px solid #ff2c6d;
 }
 @supports (--css: variables) {
   .portfolio__item:focus {
-    outline: 5px solid var(--color-primary, #ff2c6d);
+    outline: 5px solid var(--color-primary);
   }
 }
+
 .portfolio__overlay {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 5;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.35s, outline 0s;
 }
+@supports (display: flex) {
+  .portfolio__overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .portfolio__cta {
-  position: relative;
-  z-index: 6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1080;
   width: 130px;
   height: 130px;
   font-size: 1.75rem;
   color: #fff;
   text-align: center;
-  visibility: hidden;
   border: 3px solid #ff2c6d;
   border-radius: 50%;
   box-shadow: 0 0 25px #ff2c6d;
-  opacity: 0;
   transition: all 0.35s, outline 0s, opacity 0.5s;
-  transform: scale(0);
 }
 @supports (--css: variables) {
   .portfolio__cta {
@@ -886,11 +921,36 @@ img {
     box-shadow: 0 0 25px var(--color-primary, #ff2c6d);
   }
 }
-.portfolio__cta:focus {
-  top: 0;
-  visibility: visible;
-  opacity: 1;
-  transform: scale(1);
+@supports (display: flex) {
+  .portfolio__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: unset;
+    left: unset;
+    transform: scale(0);
+  }
+}
+
+.portfolio__cta-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@supports (display: flex) {
+  .portfolio__cta-inner {
+    position: static;
+    transform: none;
+  }
+}
+
+@supports (display: grid) {
+  .layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
 }
 
 .skills__cards {

@@ -11,6 +11,7 @@
 @use "intro";
 @use "sidebar";
 @use "main";
+@use "portfolio";
 
 // ==================================================================================================== //
 // LAYOUT
@@ -30,137 +31,6 @@
   @supports (display: grid) {
     display: grid;
     grid-template-columns: 200px 1fr;
-  }
-}
-
-.portfolio {
-  position: relative;
-
-  &__top {
-    display: flex;
-    align-items: flex-end;
-    // max-height: 560px;
-    overflow: hidden;
-
-    img {
-      position: absolute;
-      bottom: 0;
-      z-index: -1; // image was overlapping button making it unclickable with mouse
-      display: block;
-      width: 100%;
-      opacity: 0.05;
-
-      // @media only screen and (max-width: 1799px) {
-      //   min-height: 500px;
-      // }
-    }
-  }
-
-  &__content {
-    padding-top: 3rem;
-    // padding-top: 12rem;
-
-    .leading {
-      max-width: 700px;
-    }
-  }
-
-  &__gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
-
-    @media only screen and (min-width: 1400px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  &__item {
-    position: relative;
-    display: block;
-    overflow: hidden;
-
-    img {
-      display: block;
-      width: 100%;
-      transition: all 0.35s, outline 0s;
-    }
-
-    &:hover, &:focus {
-
-      .portfolio__overlay {
-        background-color: rgba(0, 0, 0, 0.75);
-      }
-
-      .portfolio__cta {
-        top: 0;
-        visibility: visible;
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      img {
-        transform: scale(1.2);
-      }
-    }
-
-    &:focus {
-      z-index: 5;
-      outline: 5px solid var.$color-primary;
-
-      @supports (--css: variables) {
-        outline: 5px solid var(--color-primary, var.$color-primary);
-      }
-    }
-  }
-
-  &__overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    // this z-index corrects an issue of the background-color disappearing
-    // when the image it covers is scaled up on hover
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.35s, outline 0s;
-  }
-
-  &__cta {
-    position: relative;
-    z-index: 6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    height: 130px;
-    font-size: 1.75rem;
-    color: var.$color-white;
-    text-align: center;
-    visibility: hidden;
-    border: 3px solid var.$color-primary;
-    border-radius: 50%;
-    box-shadow: 0 0 25px var.$color-primary;
-    opacity: 0;
-    transition: all 0.35s, outline 0s, opacity 0.5s;
-    transform: scale(0);
-
-    @supports (--css: variables) {
-      color: var(--color-white, var.$color-white);
-      border: 3px solid var(--color-primary, var.$color-primary);
-      box-shadow: 0 0 25px var(--color-primary, var.$color-primary);
-    }
-
-    &:focus {
-      top: 0;
-      visibility: visible;
-      opacity: 1;
-      transform: scale(1);
-    }
   }
 }
 

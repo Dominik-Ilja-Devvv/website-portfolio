@@ -1,0 +1,142 @@
+@use "variables" as var;
+@use "mixins" as mix;
+
+.portfolio__top {
+  position: relative;
+
+  img {
+    position: absolute;
+    bottom: 0;
+    z-index: -1; // image was overlapping button making it unclickable with mouse
+    width: auto;
+    height: 31.25rem;
+    opacity: 0.05;
+
+    @media only screen and (min-width: 112.5rem) { width: 100%; height: auto; }
+  }
+}
+
+.portfolio__content {
+  padding-top: 3rem;
+
+  .leading { max-width: 700px; }
+}
+
+// controls layout for gallery items
+.portfolio__gallery {
+  // TODO : Create Layout using floats
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  > * {
+    float: left;
+    width: 100%;
+
+    @media only screen and (min-width: var.$bp-3) { width: 50%; }
+    @media only screen and (min-width: var.$bp-4) { width: 33.333333%; }
+    @media only screen and (min-width: var.$bp-7) { width: 25%; }
+  }
+
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+
+    > * { width: 100%; }
+
+    @media only screen and (min-width: var.$bp-7) { grid-template-columns: repeat(4, 1fr); }
+  }
+}
+
+.portfolio__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+
+  img { transition: all 0.35s, outline 0s; }
+
+  // ------------------------------
+  // | Whenever we hover or focus on an item we'll update the styling
+  // | of our overlay, cta, and img.
+  // |
+  // | IE 11 & below doesn't render transforms nested within 3d transforms
+  // | correctly. So we simply transition the reveal of the cta
+  // ------------------------------
+  &:hover, &:focus {
+
+    .portfolio__overlay { background-color: rgba(0, 0, 0, 0.75); }
+
+    .portfolio__cta {
+      visibility: visible;
+      opacity: 1;
+
+      @supports (display: flex) { transform: scale(1); }
+    }
+
+    img { transform: scale(1.2); }
+  }
+
+  &:focus {
+    outline: 5px solid var.$color-primary;
+
+    @supports (--css: variables) { outline: 5px solid var(--color-primary); }
+  }
+}
+
+.portfolio__overlay {
+  @include mix.cover-overlay;
+
+  // ------------------------------
+  // | z-index corrects an issue of the background-color disappearing
+  // | when the image it covers is scaled up on hover
+  // ------------------------------
+
+  z-index: 5;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.35s, outline 0s;
+
+  @supports (display: flex) { @include mix.center-flex; }
+}
+
+.portfolio__cta {
+  @include mix.center-no-flex;
+  @include mix.hide;
+  
+  z-index: var.$z-index-tooltip;
+  width: 130px;
+  height: 130px;
+  font-size: 1.75rem;
+  color: var.$color-white;
+  text-align: center;
+  border: 3px solid var.$color-primary;
+  border-radius: 50%;
+  box-shadow: 0 0 25px var.$color-primary;
+  transition: all 0.35s, outline 0s, opacity 0.5s;
+
+  @supports (--css: variables) {
+    color: var(--color-white, var.$color-white);
+    border: 3px solid var(--color-primary, var.$color-primary);
+    box-shadow: 0 0 25px var(--color-primary, var.$color-primary);
+  }
+
+  @supports (display: flex) {
+    @include mix.center-flex;
+    position: relative;
+    top: unset;
+    left: unset;
+    transform: scale(0);
+  }
+}
+
+.portfolio__cta-inner {
+  @include mix.center-no-flex;
+
+  @supports (display: flex) {
+    position: static;
+    transform: none;
+  }
+}
