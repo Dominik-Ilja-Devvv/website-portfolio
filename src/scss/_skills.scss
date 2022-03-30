@@ -21,20 +21,12 @@ $-card-gap: 4rem;
   > .skills__card { display: inline-block; }
   
   @supports(display: flex) {
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: center;
-    // margin-right: -$-card-gap; // 1.) negative margin
-  }
-
-  @supports (display: grid) and (row-gap: 4rem) {
-    // display: grid;
-    // column-gap: 2rem;
-    // grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
-    // justify-items: center;
-    // row-gap: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
+
 .skills__card {
   position: relative;
   width: 100%;

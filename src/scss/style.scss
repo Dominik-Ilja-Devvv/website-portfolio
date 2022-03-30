@@ -13,6 +13,7 @@
 @use "main";
 @use "portfolio";
 @use "skills";
+@use "about";
 
 // ==================================================================================================== //
 // LAYOUT
@@ -34,38 +35,6 @@
   @supports (display: grid) {
     display: grid;
     grid-template-columns: 200px 1fr;
-  }
-}
-
-
-
-.about {
-  position: relative;
-  padding-top: 5.125rem;
-  padding-bottom: 5.125rem;
-
-  @media only screen and (min-width: 380px) {
-    padding-top: 6.875rem;
-    padding-bottom: 6.875rem;
-  }
-  @media only screen and (min-width: 500px) {
-    padding-top: 8.625rem;
-    padding-bottom: 8.625rem;
-  }
-
-  .bg-title {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 0;
-    font-size: 10rem;
-    // font-size: 36.25rem; // might come back to this
-    line-height: 0.8;
-    opacity: 0.6;
-
-    @media only screen and (min-width: 500px) {
-      font-size: 20rem;
-    }
   }
 }
 

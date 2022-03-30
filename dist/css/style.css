@@ -949,6 +949,14 @@ img {
 .skills__cards > .skills__card {
   display: inline-block;
 }
+@supports (display: flex) {
+  .skills__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
 .skills__card {
   position: relative;
   width: 100%;
@@ -1068,13 +1076,6 @@ img {
   }
 }
 
-@supports (display: grid) {
-  .layout {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-  }
-}
-
 .about {
   position: relative;
   padding-top: 5.125rem;
@@ -1104,6 +1105,13 @@ img {
 @media only screen and (min-width: 500px) {
   .about .bg-title {
     font-size: 20rem;
+  }
+}
+
+@supports (display: grid) {
+  .layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
   }
 }
 
