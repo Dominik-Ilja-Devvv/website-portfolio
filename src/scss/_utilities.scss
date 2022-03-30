@@ -44,11 +44,10 @@
   font-size: 0.9375rem;
   line-height: 1.4;
   color: var.$color-white;
-  
-  @supports(--css: variables) {
+
+  @supports (--css: variables) {
     font-family: var(--font-comfortaa, var.$font-comfortaa);
     color: var(--color-white, var.$color-white);
-    
   }
 
   @media only screen and (min-width: 380px) {
@@ -105,9 +104,7 @@
 .text-primary {
   color: var.$color-primary !important;
 
-  @supports (--css: variables) {
-    color: var(--color-primary, var.$color-primary) !important;
-  }
+  @supports (--css: variables) { color: var(--color-primary) !important; }
 }
 .text-primary-shadow {
   color: var.$color-primary-shadow !important;
@@ -136,8 +133,8 @@
   font-size: 2.2rem;
 
   color: var.$color-white;
-  
-  @supports(--css: variables) {
+
+  @supports (--css: variables) {
     color: var(--color-white, var.$color-white);
   }
 
@@ -157,8 +154,8 @@
   font-family: var.$font-zilla-slab;
   font-size: 1.8rem;
   color: var.$color-white;
-  
-  @supports(--css: variables) {
+
+  @supports (--css: variables) {
     font-family: var(--font-zilla-slab, var.$font-zilla-slab);
     color: var(--color-white, var.$color-white);
   }

@@ -37,6 +37,7 @@
 body {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
   font-family: "Rosario", sans-serif;
   background-color: #222223;
 }
@@ -176,8 +177,8 @@ img {
 .nav-toggle .line {
   position: absolute;
   top: 50%;
-  left: 20%;
   right: 20%;
+  left: 20%;
   width: 60%;
   height: 3px;
   background-color: #fff;
@@ -381,7 +382,7 @@ img {
 }
 @supports (--css: variables) {
   .text-primary {
-    color: var(--color-primary, #ff2c6d) !important;
+    color: var(--color-primary) !important;
   }
 }
 
@@ -491,28 +492,28 @@ img {
 }
 
 .intro {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
+}
+@media only screen and (min-width: 900px) {
+  .intro {
+    padding-top: 7.8125rem;
+  }
 }
 @media only screen and (min-width: 1000px) {
   .intro {
-    padding-bottom: 125px;
-  }
-}
-@media only screen and (min-width: 868px) {
-  .intro {
-    padding-top: 125px;
+    padding-bottom: 7.8125rem;
   }
 }
 .intro__title {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   font-size: 2.7rem;
   font-weight: 400;
   color: #fff;
 }
 @supports (--css: variables) {
   .intro__title {
-    color: var(--color-white, #fff);
+    color: var(--color-white);
   }
 }
 @media only screen and (min-width: 380px) {
@@ -522,6 +523,7 @@ img {
 }
 @media only screen and (min-width: 500px) {
   .intro__title {
+    margin-bottom: 3rem;
     font-size: 4rem;
   }
 }
@@ -533,14 +535,6 @@ img {
 @media only screen and (min-width: 900px) {
   .intro__title {
     font-size: 6.5rem;
-  }
-}
-.intro__title span {
-  color: #ff2c6d;
-}
-@supports (--css: variables) {
-  .intro__title span {
-    color: var(--color-primary, #ff2c6d);
   }
 }
 
@@ -567,6 +561,11 @@ img {
     flex-direction: column;
   }
 }
+@supports (display: grid) {
+  .sidebar {
+    grid-column: 1/3;
+  }
+}
 .sidebar.js-mobile {
   transition: all 0.75s;
 }
@@ -575,9 +574,14 @@ img {
 }
 @media only screen and (min-width: 1200px) {
   .sidebar {
-    width: 200px;
+    width: 12.5rem;
     height: 100vh;
     transform: translateX(0);
+  }
+  @supports (display: grid) {
+    .sidebar {
+      grid-column: 1/2;
+    }
   }
 }
 
@@ -588,11 +592,11 @@ img {
 }
 @supports (display: flex) {
   .sidebar .logo {
-    height: auto;
     position: static;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: auto;
     padding: 1rem;
   }
 }
@@ -613,8 +617,8 @@ img {
 }
 
 .sidebar .divider {
-  margin-bottom: 1rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   background-color: #333;
 }
 @supports (--css: variables) {
@@ -624,8 +628,8 @@ img {
 }
 @media only screen and (min-width: 1200px) {
   .sidebar .divider {
-    margin-bottom: 2rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     background-color: #333;
   }
   @supports (--css: variables) {
@@ -685,9 +689,9 @@ img {
 @supports (display: flex) {
   .sidebar .social-icons {
     display: flex;
+    flex: 1;
     align-items: flex-end;
     justify-content: center;
-    flex: 1;
     margin-bottom: 1rem;
   }
 }
@@ -708,10 +712,10 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 1.2375rem;
   height: 1.2375rem;
   transition: all 0.35s;
+  transform: translate(-50%, -50%);
   fill: rgba(255, 44, 109, 0.5);
 }
 @supports (--css: variables) {
@@ -729,13 +733,13 @@ img {
 }
 .sidebar .social-icons .link {
   position: relative;
+  display: inline-block;
   width: 2.25rem;
   height: 2.25rem;
+  margin-right: 8px;
   text-decoration: none;
   background-color: #222223;
   border-radius: 50%;
-  display: inline-block;
-  margin-right: 8px;
 }
 @supports (display: flex) {
   .sidebar .social-icons .link {
@@ -756,24 +760,14 @@ img {
   }
 }
 
-.layout {
-  display: flex;
-  flex-direction: column;
-}
-@supports (display: grid) {
-  .layout {
-    display: grid;
-    grid-template-columns: 200px 1fr;
+@media (min-width: 1200px) {
+  .main {
+    margin-left: 12.5rem;
   }
-}
-
-.main {
-  margin-left: auto;
-  width: 100%;
-  overflow: hidden;
 }
 @supports (display: grid) {
   .main {
+    margin-left: unset;
     grid-column: 1/3;
   }
   @media only screen and (min-width: 1200px) {
@@ -782,15 +776,23 @@ img {
     }
   }
 }
-.main .portfolio {
+
+@supports (display: grid) {
+  .layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+}
+
+.portfolio {
   position: relative;
 }
-.main .portfolio__top {
+.portfolio__top {
   display: flex;
   align-items: flex-end;
   overflow: hidden;
 }
-.main .portfolio__top img {
+.portfolio__top img {
   position: absolute;
   bottom: 0;
   z-index: -1;
@@ -798,53 +800,53 @@ img {
   width: 100%;
   opacity: 0.05;
 }
-.main .portfolio__content {
+.portfolio__content {
   padding-top: 3rem;
 }
-.main .portfolio__content .leading {
+.portfolio__content .leading {
   max-width: 700px;
 }
-.main .portfolio__gallery {
+.portfolio__gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
 }
 @media only screen and (min-width: 1400px) {
-  .main .portfolio__gallery {
+  .portfolio__gallery {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-.main .portfolio__item {
+.portfolio__item {
   position: relative;
   display: block;
   overflow: hidden;
 }
-.main .portfolio__item img {
+.portfolio__item img {
   display: block;
   width: 100%;
   transition: all 0.35s, outline 0s;
 }
-.main .portfolio__item:hover .portfolio__overlay, .main .portfolio__item:focus .portfolio__overlay {
+.portfolio__item:hover .portfolio__overlay, .portfolio__item:focus .portfolio__overlay {
   background-color: rgba(0, 0, 0, 0.75);
 }
-.main .portfolio__item:hover .portfolio__cta, .main .portfolio__item:focus .portfolio__cta {
+.portfolio__item:hover .portfolio__cta, .portfolio__item:focus .portfolio__cta {
   top: 0;
   visibility: visible;
   opacity: 1;
   transform: scale(1);
 }
-.main .portfolio__item:hover img, .main .portfolio__item:focus img {
+.portfolio__item:hover img, .portfolio__item:focus img {
   transform: scale(1.2);
 }
-.main .portfolio__item:focus {
+.portfolio__item:focus {
   z-index: 5;
   outline: 5px solid #ff2c6d;
 }
 @supports (--css: variables) {
-  .main .portfolio__item:focus {
+  .portfolio__item:focus {
     outline: 5px solid var(--color-primary, #ff2c6d);
   }
 }
-.main .portfolio__overlay {
+.portfolio__overlay {
   position: absolute;
   top: 0;
   right: 0;
@@ -858,7 +860,7 @@ img {
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.35s, outline 0s;
 }
-.main .portfolio__cta {
+.portfolio__cta {
   position: relative;
   z-index: 6;
   display: flex;
@@ -878,26 +880,27 @@ img {
   transform: scale(0);
 }
 @supports (--css: variables) {
-  .main .portfolio__cta {
+  .portfolio__cta {
     color: var(--color-white, #fff);
     border: 3px solid var(--color-primary, #ff2c6d);
     box-shadow: 0 0 25px var(--color-primary, #ff2c6d);
   }
 }
-.main .portfolio__cta:focus {
+.portfolio__cta:focus {
   top: 0;
   visibility: visible;
   opacity: 1;
   transform: scale(1);
 }
-.main .skills__cards {
+
+.skills__cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-right: -4rem;
 }
 @supports (display: grid) and (row-gap: 4rem) {
-  .main .skills__cards {
+  .skills__cards {
     display: grid;
     column-gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
@@ -905,94 +908,94 @@ img {
     row-gap: 4rem;
   }
 }
-.main .skills__card {
-  margin-right: 4rem;
-  margin-bottom: 4rem;
+.skills__card {
   position: relative;
   width: 100%;
   max-width: 300px;
   min-height: 472px;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  margin-right: 4rem;
+  margin-bottom: 4rem;
   overflow: hidden;
   text-align: center;
   border-radius: 24px;
   box-shadow: 0 0 25px 0 currentColor;
   transition: all 0.35s, outline 0s;
 }
-.main .skills__card:hover, .main .skills__card:focus {
+.skills__card:hover, .skills__card:focus {
   transform: translateY(-2rem);
 }
-.main .skills__card--1 {
+.skills__card--1 {
   color: rgba(25, 249, 216, 0.25);
 }
 @supports (--css: variables) {
-  .main .skills__card--1 {
+  .skills__card--1 {
     color: var(--color-secondary-shadow, rgba(25, 249, 216, 0.25));
   }
 }
-.main .skills__card--1:hover, .main .skills__card--1:focus {
+.skills__card--1:hover, .skills__card--1:focus {
   color: #19f9d8;
   border: 2px solid currentColor;
   outline: 0;
 }
 @supports (--css: variables) {
-  .main .skills__card--1:hover, .main .skills__card--1:focus {
+  .skills__card--1:hover, .skills__card--1:focus {
     color: var(--color-secondary, #19f9d8);
   }
 }
-.main .skills__card--2 {
+.skills__card--2 {
   color: rgba(255, 44, 109, 0.25);
 }
 @supports (--css: variables) {
-  .main .skills__card--2 {
+  .skills__card--2 {
     color: var(--color-primary-shadow, rgba(255, 44, 109, 0.25));
   }
 }
-.main .skills__card--2:hover, .main .skills__card--2:focus {
+.skills__card--2:hover, .skills__card--2:focus {
   color: #ff2c6d;
   border: 2px solid currentColor;
   outline: 0;
 }
 @supports (--css: variables) {
-  .main .skills__card--2:hover, .main .skills__card--2:focus {
+  .skills__card--2:hover, .skills__card--2:focus {
     color: var(--color-primary, #ff2c6d);
   }
 }
-.main .skills__card--3 {
+.skills__card--3 {
   color: rgba(255, 209, 67, 0.25);
 }
 @supports (--css: variables) {
-  .main .skills__card--3 {
+  .skills__card--3 {
     color: var(--color-tertiary-shadow, rgba(255, 209, 67, 0.25));
   }
 }
-.main .skills__card--3:hover, .main .skills__card--3:focus {
+.skills__card--3:hover, .skills__card--3:focus {
   color: #ffd143;
   border: 2px solid currentColor;
   outline: 0;
 }
 @supports (--css: variables) {
-  .main .skills__card--3:hover, .main .skills__card--3:focus {
+  .skills__card--3:hover, .skills__card--3:focus {
     color: var(--color-tertiary, #ffd143);
   }
 }
-.main .skills__title {
+.skills__title {
   margin-top: 0;
   margin-bottom: 2rem;
   font-size: 2.5rem;
 }
-.main .skills__list {
+.skills__list {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.main .skills__item {
+.skills__item {
   margin-bottom: 1rem;
   font-family: "Comfortaa", cursive;
   font-size: 1.25rem;
 }
-.main .skills__graphic {
+.skills__graphic {
   position: absolute;
   bottom: -112.5px;
   left: -112.5px;
@@ -1001,7 +1004,7 @@ img {
   border: 2px solid currentColor;
   border-radius: 50%;
 }
-.main .skills__graphic::after, .main .skills__graphic::before {
+.skills__graphic::after, .skills__graphic::before {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1011,30 +1014,31 @@ img {
   border: 2px solid currentColor;
   border-radius: 50%;
 }
-.main .skills__graphic::after {
+.skills__graphic::after {
   transform: scale(1.15);
 }
-.main .skills__graphic::before {
+.skills__graphic::before {
   transform: scale(1.32);
 }
-.main .about {
+
+.about {
   position: relative;
   padding-top: 5.125rem;
   padding-bottom: 5.125rem;
 }
 @media only screen and (min-width: 380px) {
-  .main .about {
+  .about {
     padding-top: 6.875rem;
     padding-bottom: 6.875rem;
   }
 }
 @media only screen and (min-width: 500px) {
-  .main .about {
+  .about {
     padding-top: 8.625rem;
     padding-bottom: 8.625rem;
   }
 }
-.main .about .bg-title {
+.about .bg-title {
   position: absolute;
   top: 0;
   right: 0;
@@ -1044,11 +1048,12 @@ img {
   opacity: 0.6;
 }
 @media only screen and (min-width: 500px) {
-  .main .about .bg-title {
+  .about .bg-title {
     font-size: 20rem;
   }
 }
-.main .contact {
+
+.contact {
   display: grid;
   justify-content: center;
   padding-bottom: 7rem;
@@ -1056,28 +1061,28 @@ img {
   grid-template-columns: minmax(280px, 1fr);
 }
 @media only screen and (min-width: 900px) {
-  .main .contact {
+  .contact {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }
-.main .contact .leading {
+.contact .leading {
   margin-top: 0;
   margin-bottom: 2rem;
 }
-.main .contact__content {
+.contact__content {
   flex: 1;
   align-self: center;
   width: 100%;
   margin-bottom: 3rem;
   justify-self: center;
 }
-.main .contact__form {
+.contact__form {
   position: relative;
   padding: 1.5rem;
   overflow: hidden;
   background-color: var(--color-black, #151515);
 }
-.main .contact__form svg {
+.contact__form svg {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -1086,7 +1091,7 @@ img {
   fill: none;
   stroke: rgba(255, 209, 67, 0.05);
 }
-.main .contact__group {
+.contact__group {
   position: relative;
   z-index: 1;
   display: flex;
@@ -1095,32 +1100,32 @@ img {
   margin-bottom: 1.5rem;
 }
 @media only screen and (min-width: 1000px) {
-  .main .contact__group:not(:last-child) {
+  .contact__group:not(:last-child) {
     margin-right: 2rem;
   }
 }
-.main .contact__label {
+.contact__label {
   margin-bottom: 0.5rem;
   font-family: "Zilla Slab", serif;
   font-size: 1.25rem;
   color: var(--color-white, #fff);
 }
-.main .contact__input, .main .contact__textarea {
+.contact__input, .contact__textarea {
   color: var(--color-white, #fff);
   background-color: transparent;
   caret-color: var(--color-tertiary, #ffd143);
 }
-.main .contact__input:focus, .main .contact__textarea:focus {
+.contact__input:focus, .contact__textarea:focus {
   outline: 2px solid var(--color-tertiary, #ffd143);
 }
-.main .contact__input {
+.contact__input {
   border: 0;
   border-bottom: 1px solid #646161;
 }
-.main .contact__textarea {
+.contact__textarea {
   border: 1px solid #646161;
 }
-.main .contact__button {
+.contact__button {
   z-index: 1;
   display: inline-block;
   padding: 0.5rem 2rem;
@@ -1128,16 +1133,16 @@ img {
   font-size: 1.5rem;
   border: 1px solid var(--color-tertiary, #ffd143);
 }
-.main .contact__button:hover, .main .contact__button:focus {
+.contact__button:hover, .contact__button:focus {
   box-shadow: 0 0 10px 0 #ffd143;
 }
-.main .contact__img {
+.contact__img {
   display: flex;
   flex: 1;
   justify-content: center;
   justify-self: center;
 }
-.main .contact__img img {
+.contact__img img {
   display: block;
   width: 100%;
   min-width: 280px;

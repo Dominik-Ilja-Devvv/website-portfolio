@@ -19,6 +19,7 @@ body {
   position: relative;
   // height: 200vh; // TESTING
   width: 100%;
+  overflow-x: hidden;
   font-family: var.$font-rosario;
   background-color: var.$color-dark;
 

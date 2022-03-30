@@ -3,7 +3,6 @@
 // > 1. ADD Focus and hover states to all interactable elements
 // > 2. Import partial files into main file
 
-
 @use "variables" as var;
 @use "base";
 @use "components";
@@ -11,14 +10,15 @@
 @use "utilities";
 @use "intro";
 @use "sidebar";
+@use "main";
 
 // ==================================================================================================== //
 // LAYOUT
 // ==================================================================================================== //
 
 .layout {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 
   // :first-child {
   //   width: 200px;
@@ -27,435 +27,417 @@
   //   flex-grow: 1;
   // }
 
-  @supports(display: grid) {
+  @supports (display: grid) {
     display: grid;
     grid-template-columns: 200px 1fr;
   }
 }
 
-.main {
-  margin-left: auto;
-  width: 100%;
-  overflow: hidden;
-  
-  // @media only screen and (min-width: 1200px) {
-  //   width: calc(100% - 200px);
-  // }
+.portfolio {
+  position: relative;
 
-  @supports(display: grid) {
-    grid-column: 1 / 3;
+  &__top {
+    display: flex;
+    align-items: flex-end;
+    // max-height: 560px;
+    overflow: hidden;
 
-    @media only screen and (min-width: 1200px) {
-      grid-column: 2 / 3;
+    img {
+      position: absolute;
+      bottom: 0;
+      z-index: -1; // image was overlapping button making it unclickable with mouse
+      display: block;
+      width: 100%;
+      opacity: 0.05;
+
+      // @media only screen and (max-width: 1799px) {
+      //   min-height: 500px;
+      // }
     }
   }
 
-  .portfolio {
+  &__content {
+    padding-top: 3rem;
+    // padding-top: 12rem;
+
+    .leading {
+      max-width: 700px;
+    }
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+
+    @media only screen and (min-width: 1400px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__item {
     position: relative;
+    display: block;
+    overflow: hidden;
 
-    &__top {
-      display: flex;
-      align-items: flex-end;
-      // max-height: 560px;
-      overflow: hidden;
-
-      img {
-        position: absolute;
-        bottom: 0;
-        z-index: -1; // image was overlapping button making it unclickable with mouse
-        display: block;
-        width: 100%;
-        opacity: 0.05;
-
-        // @media only screen and (max-width: 1799px) {
-        //   min-height: 500px;
-        // }
-      }
-    }
-
-    &__content {
-      padding-top: 3rem;
-      // padding-top: 12rem;
-
-      .leading {
-        max-width: 700px;
-      }
-    }
-
-    &__gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
-
-      @media only screen and (min-width: 1400px) {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    &__item {
-      position: relative;
+    img {
       display: block;
-      overflow: hidden;
-
-      img {
-        display: block;
-        width: 100%;
-        transition: all 0.35s, outline 0s;
-      }
-
-      &:hover, &:focus {
-
-        .portfolio__overlay {
-          background-color: rgba(0, 0, 0, 0.75);
-        }
-
-        .portfolio__cta {
-          top: 0;
-          visibility: visible;
-          opacity: 1;
-          transform: scale(1);
-        }
-
-        img {
-          transform: scale(1.2);
-        }
-      }
-
-      &:focus {
-        z-index: 5;
-        outline: 5px solid var.$color-primary;
-
-        @supports (--css: variables) {
-          outline: 5px solid var(--color-primary, var.$color-primary);
-        }
-      }
-    }
-
-    &__overlay {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      // this z-index corrects an issue of the background-color disappearing
-      // when the image it covers is scaled up on hover
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
       transition: all 0.35s, outline 0s;
     }
 
-    &__cta {
-      position: relative;
-      z-index: 6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 130px;
-      height: 130px;
-      font-size: 1.75rem;
-      color: var.$color-white;
-      text-align: center;
-      visibility: hidden;
-      border: 3px solid var.$color-primary;
-      border-radius: 50%;
-      box-shadow: 0 0 25px var.$color-primary;
-      opacity: 0;
-      transition: all 0.35s, outline 0s, opacity 0.5s;
-      transform: scale(0);
+    &:hover, &:focus {
 
-      @supports (--css: variables) {
-        color: var(--color-white, var.$color-white);
-        border: 3px solid var(--color-primary, var.$color-primary);
-        box-shadow: 0 0 25px var(--color-primary, var.$color-primary);
+      .portfolio__overlay {
+        background-color: rgba(0, 0, 0, 0.75);
       }
 
-      &:focus {
+      .portfolio__cta {
         top: 0;
         visibility: visible;
         opacity: 1;
         transform: scale(1);
       }
-    }
-  }
-
-  .skills {
-
-    &__cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-right: -4rem;
-      
-      @supports(display: grid) and (row-gap: 4rem) {
-        display: grid;
-        column-gap: 2rem;
-        grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
-        justify-items: center;
-        row-gap: 4rem;
-      }
-    }
-    &__card {
-      margin-right: 4rem;
-      margin-bottom: 4rem;
-
-      position: relative;
-      width: 100%;
-      max-width: 300px;
-      min-height: 472px;
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-      overflow: hidden;
-      text-align: center;
-      border-radius: 24px;
-      box-shadow: 0 0 25px 0 currentColor;
-      transition: all 0.35s, outline 0s;
-
-      &:hover, &:focus {
-        transform: translateY(-2rem);
-      }
-    }
-    &__card--1 {
-      color: var.$color-secondary-shadow;
-
-      @supports (--css: variables) {
-        color: var(--color-secondary-shadow, var.$color-secondary-shadow);
-      }
-
-      &:hover, &:focus {
-        color: var.$color-secondary;
-        border: 2px solid currentColor;
-        outline: 0;
-
-        @supports (--css: variables) {
-          color: var(--color-secondary, var.$color-secondary);
-        }
-      }
-    }
-    &__card--2 {
-      color: var.$color-primary-shadow;
-
-      @supports (--css: variables) {
-        color: var(--color-primary-shadow, var.$color-primary-shadow);
-      }
-
-      &:hover, &:focus {
-        color: var.$color-primary;
-        border: 2px solid currentColor;
-        outline: 0;
-
-        @supports (--css: variables) {
-          color: var(--color-primary, var.$color-primary);
-        }
-      }
-    }
-    &__card--3 {
-      color: var.$color-tertiary-shadow;
-
-      @supports (--css: variables) {
-        color: var(--color-tertiary-shadow, var.$color-tertiary-shadow);
-      }
-
-      &:hover, &:focus {
-        color: var.$color-tertiary;
-        border: 2px solid currentColor;
-        outline: 0;
-
-        @supports (--css: variables) {
-          color: var(--color-tertiary, var.$color-tertiary);
-        }
-      }
-    }
-    &__title {
-      margin-top: 0;
-      margin-bottom: 2rem;
-      font-size: 2.5rem;
-    }
-    &__list {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-    &__item {
-      margin-bottom: 1rem;
-      font-family: var.$font-comfortaa;
-      font-size: 1.25rem;
-    }
-    &__graphic {
-      $-dimensions: 225px;
-      $-position: -($-dimensions * 0.5);
-      position: absolute;
-      bottom: $-position;
-      left: $-position;
-
-      width: $-dimensions;
-      height: $-dimensions;
-      border: 2px solid currentColor;
-      border-radius: 50%;
-
-      &::after, &::before {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: $-dimensions;
-        height: $-dimensions;
-        content: "";
-        border: 2px solid currentColor;
-        border-radius: 50%;
-      }
-
-      &::after {
-        transform: scale(1.15);
-      }
-      &::before {
-        transform: scale(1.32);
-      }
-    }
-  }
-
-  .about {
-    position: relative;
-    padding-top: 5.125rem;
-    padding-bottom: 5.125rem;
-
-    @media only screen and (min-width: 380px) {
-      padding-top: 6.875rem;
-      padding-bottom: 6.875rem;
-    }
-    @media only screen and (min-width: 500px) {
-      padding-top: 8.625rem;
-      padding-bottom: 8.625rem;
-    }
-
-    .bg-title {
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin-top: 0;
-      font-size: 10rem;
-      // font-size: 36.25rem; // might come back to this
-      line-height: 0.8;
-      opacity: 0.6;
-
-      @media only screen and (min-width: 500px) {
-        font-size: 20rem;
-      }
-    }
-  }
-
-  .contact {
-    display: grid;
-    justify-content: center;
-    padding-bottom: 7rem;
-    column-gap: 3rem;
-    grid-template-columns: minmax(280px, 1fr);
-
-    @media only screen and (min-width: 900px) {
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    }
-
-    .leading {
-      margin-top: 0;
-      margin-bottom: 2rem;
-    }
-
-    &__content {
-      flex: 1;
-      align-self: center;
-      width: 100%;
-      margin-bottom: 3rem;
-      justify-self: center;
-    }
-
-    &__form {
-      position: relative;
-      padding: 1.5rem;
-      // padding: 3rem 2rem; // larger screens
-      overflow: hidden;
-      background-color: var(--color-black, var.$color-black);
-
-      svg {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        transform: translate(175px, -100px) scale(2.2) rotate(-55deg);
-        fill: none;
-        stroke: rgba(var.$color-tertiary, 0.05);
-      }
-    }
-
-    &__group {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      margin-bottom: 1.5rem;
-
-      @media only screen and (min-width: 1000px) {
-        &:not(:last-child) {
-          margin-right: 2rem;
-        }
-      }
-    }
-
-    &__label {
-      margin-bottom: 0.5rem;
-      font-family: var.$font-zilla-slab;
-      font-size: 1.25rem;
-      color: var(--color-white, var.$color-white);
-    }
-
-    &__input, &__textarea {
-      color: var(--color-white, var.$color-white);
-      background-color: transparent;
-      caret-color: var(--color-tertiary, var.$color-tertiary);
-    }
-
-    &__input:focus, &__textarea:focus {
-      outline: 2px solid var(--color-tertiary, var.$color-tertiary);
-    }
-
-    &__input {
-      border: 0;
-      border-bottom: 1px solid #646161;
-    }
-
-    &__textarea {
-      border: 1px solid #646161;
-    }
-
-    &__button {
-      z-index: 1;
-      display: inline-block;
-      padding: 0.5rem 2rem;
-      font-family: var.$font-zilla-slab;
-      font-size: 1.5rem;
-      border: 1px solid var(--color-tertiary, var.$color-tertiary);
-
-      &:hover, &:focus {
-        box-shadow: 0 0 10px 0 var.$color-tertiary;
-      }
-    }
-
-    &__img {
-      display: flex;
-      flex: 1;
-      justify-content: center;
-      justify-self: center;
 
       img {
-        display: block;
-        width: 100%;
-        min-width: 280px;
-        max-width: 600px;
-
-        height: 100%;
-        max-height: 800px; // larger screens
+        transform: scale(1.2);
       }
+    }
+
+    &:focus {
+      z-index: 5;
+      outline: 5px solid var.$color-primary;
+
+      @supports (--css: variables) {
+        outline: 5px solid var(--color-primary, var.$color-primary);
+      }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    // this z-index corrects an issue of the background-color disappearing
+    // when the image it covers is scaled up on hover
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.35s, outline 0s;
+  }
+
+  &__cta {
+    position: relative;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    font-size: 1.75rem;
+    color: var.$color-white;
+    text-align: center;
+    visibility: hidden;
+    border: 3px solid var.$color-primary;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var.$color-primary;
+    opacity: 0;
+    transition: all 0.35s, outline 0s, opacity 0.5s;
+    transform: scale(0);
+
+    @supports (--css: variables) {
+      color: var(--color-white, var.$color-white);
+      border: 3px solid var(--color-primary, var.$color-primary);
+      box-shadow: 0 0 25px var(--color-primary, var.$color-primary);
+    }
+
+    &:focus {
+      top: 0;
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+.skills {
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: -4rem;
+
+    @supports (display: grid) and (row-gap: 4rem) {
+      display: grid;
+      column-gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+      justify-items: center;
+      row-gap: 4rem;
+    }
+  }
+  &__card {
+
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    min-height: 472px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-right: 4rem;
+    margin-bottom: 4rem;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 24px;
+    box-shadow: 0 0 25px 0 currentColor;
+    transition: all 0.35s, outline 0s;
+
+    &:hover, &:focus {
+      transform: translateY(-2rem);
+    }
+  }
+  &__card--1 {
+    color: var.$color-secondary-shadow;
+
+    @supports (--css: variables) {
+      color: var(--color-secondary-shadow, var.$color-secondary-shadow);
+    }
+
+    &:hover, &:focus {
+      color: var.$color-secondary;
+      border: 2px solid currentColor;
+      outline: 0;
+
+      @supports (--css: variables) {
+        color: var(--color-secondary, var.$color-secondary);
+      }
+    }
+  }
+  &__card--2 {
+    color: var.$color-primary-shadow;
+
+    @supports (--css: variables) {
+      color: var(--color-primary-shadow, var.$color-primary-shadow);
+    }
+
+    &:hover, &:focus {
+      color: var.$color-primary;
+      border: 2px solid currentColor;
+      outline: 0;
+
+      @supports (--css: variables) {
+        color: var(--color-primary, var.$color-primary);
+      }
+    }
+  }
+  &__card--3 {
+    color: var.$color-tertiary-shadow;
+
+    @supports (--css: variables) {
+      color: var(--color-tertiary-shadow, var.$color-tertiary-shadow);
+    }
+
+    &:hover, &:focus {
+      color: var.$color-tertiary;
+      border: 2px solid currentColor;
+      outline: 0;
+
+      @supports (--css: variables) {
+        color: var(--color-tertiary, var.$color-tertiary);
+      }
+    }
+  }
+  &__title {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  &__item {
+    margin-bottom: 1rem;
+    font-family: var.$font-comfortaa;
+    font-size: 1.25rem;
+  }
+  &__graphic {
+    $-dimensions: 225px;
+    $-position: -($-dimensions * 0.5);
+    position: absolute;
+    bottom: $-position;
+    left: $-position;
+
+    width: $-dimensions;
+    height: $-dimensions;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+
+    &::after, &::before {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: $-dimensions;
+      height: $-dimensions;
+      content: "";
+      border: 2px solid currentColor;
+      border-radius: 50%;
+    }
+
+    &::after {
+      transform: scale(1.15);
+    }
+    &::before {
+      transform: scale(1.32);
+    }
+  }
+}
+
+.about {
+  position: relative;
+  padding-top: 5.125rem;
+  padding-bottom: 5.125rem;
+
+  @media only screen and (min-width: 380px) {
+    padding-top: 6.875rem;
+    padding-bottom: 6.875rem;
+  }
+  @media only screen and (min-width: 500px) {
+    padding-top: 8.625rem;
+    padding-bottom: 8.625rem;
+  }
+
+  .bg-title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 0;
+    font-size: 10rem;
+    // font-size: 36.25rem; // might come back to this
+    line-height: 0.8;
+    opacity: 0.6;
+
+    @media only screen and (min-width: 500px) {
+      font-size: 20rem;
+    }
+  }
+}
+
+.contact {
+  display: grid;
+  justify-content: center;
+  padding-bottom: 7rem;
+  column-gap: 3rem;
+  grid-template-columns: minmax(280px, 1fr);
+
+  @media only screen and (min-width: 900px) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  .leading {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  &__content {
+    flex: 1;
+    align-self: center;
+    width: 100%;
+    margin-bottom: 3rem;
+    justify-self: center;
+  }
+
+  &__form {
+    position: relative;
+    padding: 1.5rem;
+    // padding: 3rem 2rem; // larger screens
+    overflow: hidden;
+    background-color: var(--color-black, var.$color-black);
+
+    svg {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      transform: translate(175px, -100px) scale(2.2) rotate(-55deg);
+      fill: none;
+      stroke: rgba(var.$color-tertiary, 0.05);
+    }
+  }
+
+  &__group {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+    @media only screen and (min-width: 1000px) {
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  &__label {
+    margin-bottom: 0.5rem;
+    font-family: var.$font-zilla-slab;
+    font-size: 1.25rem;
+    color: var(--color-white, var.$color-white);
+  }
+
+  &__input, &__textarea {
+    color: var(--color-white, var.$color-white);
+    background-color: transparent;
+    caret-color: var(--color-tertiary, var.$color-tertiary);
+  }
+
+  &__input:focus, &__textarea:focus {
+    outline: 2px solid var(--color-tertiary, var.$color-tertiary);
+  }
+
+  &__input {
+    border: 0;
+    border-bottom: 1px solid #646161;
+  }
+
+  &__textarea {
+    border: 1px solid #646161;
+  }
+
+  &__button {
+    z-index: 1;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    font-family: var.$font-zilla-slab;
+    font-size: 1.5rem;
+    border: 1px solid var(--color-tertiary, var.$color-tertiary);
+
+    &:hover, &:focus {
+      box-shadow: 0 0 10px 0 var.$color-tertiary;
+    }
+  }
+
+  &__img {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    justify-self: center;
+
+    img {
+      display: block;
+      width: 100%;
+      min-width: 280px;
+      max-width: 600px;
+
+      height: 100%;
+      max-height: 800px; // larger screens
     }
   }
 }

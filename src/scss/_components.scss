@@ -114,36 +114,36 @@
   &:focus, &:hover, &.active {
     .line {
       background-color: var.$color-primary;
-      
-      @supports(--css: variables) {
+
+      @supports (--css: variables) {
         background-color: var(--color-primary, var.$color-primary);
       }
     }
   }
   &:focus {
     outline: 2px solid var.$color-primary;
-    
-    @supports(--css: variables) {
+
+    @supports (--css: variables) {
       outline: 2px solid var(--color-primary, var.$color-primary);
     }
   }
 
   .line {
     $-line-height: 10px;
-    
+
     position: absolute;
     top: 50%;
-    left: 20%;
     right: 20%;
+    left: 20%;
     width: 60%;
     height: 3px;
     background-color: var.$color-white;
     transition: all 0.35s, outline 0s;
-    
-    @supports(--css: variables) {
+
+    @supports (--css: variables) {
       background-color: var(--color-white, var.$color-white);
     }
-    
+
     &--1 {
       transform: translateY(-$-line-height);
     }

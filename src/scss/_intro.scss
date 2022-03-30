@@ -1,45 +1,23 @@
 @use "variables" as var;
 
 .intro {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
 
-  @media only screen and (min-width: 1000px) {
-    padding-bottom: 125px;
-  }
-  @media only screen and (min-width: 868px) {
-    padding-top: 125px;
-  }
+  @media only screen and (min-width: var.$bp-4) { padding-top: 7.8125rem; }
+  @media only screen and (min-width: var.$bp-5) { padding-bottom: 7.8125rem; }
 
   &__title {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 2.7rem;
     font-weight: 400;
     color: var.$color-white;
 
-    @supports (--css: variables) {
-      color: var(--color-white, var.$color-white);
-    }
+    @supports (--css: variables) { color: var(--color-white); }
 
-    @media only screen and (min-width: 380px) {
-      font-size: 3.5rem;
-    }
-    @media only screen and (min-width: 500px) {
-      font-size: 4rem;
-    }
-    @media only screen and (min-width: 700px) {
-      font-size: 5.5rem;
-    }
-    @media only screen and (min-width: 900px) {
-      font-size: 6.5rem;
-    }
-
-    span {
-      color: var.$color-primary;
-
-      @supports (--css: variables) {
-        color: var(--color-primary, var.$color-primary);
-      }
-    }
+    @media only screen and (min-width: var.$bp-1) { font-size: 3.5rem; }
+    @media only screen and (min-width: var.$bp-2) { margin-bottom: 3rem; font-size: 4rem; }
+    @media only screen and (min-width: var.$bp-3) { font-size: 5.5rem; }
+    @media only screen and (min-width: var.$bp-4) { font-size: 6.5rem; }
   }
 }
