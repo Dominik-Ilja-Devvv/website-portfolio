@@ -10,6 +10,7 @@
 @use "js";
 @use "utilities";
 @use "intro";
+@use "sidebar";
 
 // ==================================================================================================== //
 // LAYOUT
@@ -32,164 +33,14 @@
   }
 }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  // setting a min-height for the mobile version screws with overflow-y
-  // the desktop version of sidebar is fine to have a min-height
-  // width: 200px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  overflow-y: auto;
-  background-color: var.$color-black;
-  transform: translateX(100%);
-  grid-column: 1 / 3;
-
-  @supports (--css: variabels) {
-    background-color: var(--color-black, var.$color-black);
-  }
-
-  &.js-mobile { transition: all 0.75s; }
-
-  &.active { transform: translateX(0); }
-
-  @media only screen and (min-width: 1200px) {
-    width: 200px;
-    height: 100vh;
-    min-height: 600px;
-    transform: none;
-    grid-column: 1 / 2;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 3rem;
-
-    img {
-      height: 100px;
-    }
-  }
-
-  .divider {
-    margin-bottom: 15px;
-    background-color: transparent;
-
-    @media only screen and (min-width: 1200px) {
-      margin-bottom: 50px;
-      background-color: var.$color-muted;
-
-      @supports (--css: variables) {
-        background-color: var(--color-muted, var.$color-muted);
-      }
-    }
-  }
-
-  .nav {
-
-    &__menu {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-    &__item {
-      text-align: center;
-    }
-    &__link {
-      display: inline-block;
-      width: 100%;
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-      font-size: 1.5rem;
-      color: #fff;
-      text-decoration: none;
-      transition: all 0.1s;
-
-      &:hover, &:focus {
-        color: var.$color-primary;
-        background-color: rgba(var.$color-muted, 0.1);
-
-        @supports (--css: variables) {
-          color: var(--color-primary, var.$color-primary);
-        }
-      }
-      &:focus {
-
-        border-style: solid;
-      }
-    }
-  }
-
-  .social-icons {
-    display: flex;
-    flex: 1;
-    align-items: end;
-    align-self: end;
-    justify-content: center;
-    width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-
-    $-link-dimensions: 2.25rem;
-    $-svg-dimensions: $-link-dimensions * 0.55;
-
-    svg {
-      position: relative;
-      top: 1px;
-      width: $-svg-dimensions;
-      height: $-svg-dimensions;
-      transition: all 0.35s;
-      fill: var.$color-primary-faded;
-
-      @supports (--css: variables) {
-        fill: var(--color-primary-faded, var.$color-primary-faded);
-      }
-    }
-
-    .link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: $-link-dimensions;
-      height: $-link-dimensions;
-      text-decoration: none;
-      background-color: #222223;
-      border-radius: 50%;
-      transition: all 5s, outline 0;
-
-      &:not(:last-child) {
-        // margin-bottom: 1rem;
-        margin-right: 1rem;
-
-        @media only screen and (min-width: 1200px) {
-          margin-right: 1rem;
-        }
-      }
-
-      &:hover svg {
-        fill: var.$color-primary;
-
-        @supports (--css: variables) {
-          fill: var(--color-primary, var.$color-primary);
-        }
-      }
-    }
-  }
-}
-
 .main {
   margin-left: auto;
   width: 100%;
   overflow: hidden;
   
-  @media only screen and (min-width: 1200px) {
-    width: calc(100% - 200px);
-  }
+  // @media only screen and (min-width: 1200px) {
+  //   width: calc(100% - 200px);
+  // }
 
   @supports(display: grid) {
     grid-column: 1 / 3;

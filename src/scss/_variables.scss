@@ -72,3 +72,15 @@ $bp-5: 1000px;
 $bp-6: 1200px;
 $bp-7: 1400px;
 $bp-8: 1799px;
+
+// Z-INDEX
+// ================================================== //
+$z-index-dropdown:                   1000;
+$z-index-sticky:                     1020;
+$z-index-fixed:                      1030;
+$z-index-modal-backdrop:             1040;
+$z-index-offcanvas:                  1050;
+$z-index-modal:                      1060;
+$z-index-popover:                    1070;
+$z-index-tooltip:                    1080;
+
