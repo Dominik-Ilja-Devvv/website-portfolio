@@ -52,9 +52,11 @@ $color-white: #fff;
   --color-dark: #{$color-dark};
   --color-muted: #{$color-muted};
   --color-primary-faded: #{$color-primary-faded};
+  --color-primary-shadow: #{$color-primary-shadow};
   --color-primary: #{$color-primary};
   --color-secondary-shadow: #{$color-secondary-shadow};
   --color-secondary: #{$color-secondary};
+  --color-tertiary-shadow: #{$color-tertiary-shadow};
   --color-tertiary: #{$color-tertiary};
   --color-white: #{$color-white};
   --font-comfortaa: #{$font-comfortaa + ""};
@@ -71,15 +73,15 @@ $bp-4: 900px;
 $bp-5: 1000px;
 $bp-6: 1200px;
 $bp-7: 1400px;
-$bp-8: 1799px;
+$bp-8: 1800px;
 
 // Z-INDEX
 // ================================================== //
-$z-index-dropdown:                   1000;
-$z-index-sticky:                     1020;
-$z-index-fixed:                      1030;
-$z-index-modal-backdrop:             1040;
-$z-index-offcanvas:                  1050;
-$z-index-modal:                      1060;
-$z-index-popover:                    1070;
-$z-index-tooltip:                    1080;
+$z-index-1: 1000;
+$z-index-2: 1020;
+$z-index-3: 1030;
+$z-index-4: 1040;
+$z-index-5: 1050;
+$z-index-6: 1060;
+$z-index-7: 1070;
+$z-index-8: 1080;

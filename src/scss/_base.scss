@@ -7,9 +7,9 @@
 @use "variables" as var;
 
 * { box-sizing: border-box; }
-*:hover { z-index: 1; }
-*:focus { z-index: 2; }
-*:active { z-index: 3; }
+// *:hover { z-index: 1; }
+// *:focus { z-index: 2; }
+// *:active { z-index: 3; }
 
 // ------------------------------
 // | width: 100%; prevents the body from resizing when position: fixed; is applied to the body.

@@ -1,0 +1,147 @@
+@use "variables" as var;
+@use "mixins" as mix;
+
+// ------------------------------
+// | Details how the cards will layout. The wrapper around the cards.
+// ------------------------------
+
+$-card-gap: 4rem;
+
+.skills__cards {
+
+  // ------------------------------
+  // | 1. adding a negative margin allows the inline blocks and 
+  // |    flex layout to wrap the items properly to the next line.
+  // ------------------------------
+
+  text-align: center; // this relies on the children being "display: inline-block;"
+  margin-right: -$-card-gap; // 1.
+
+  // all direct children of .skills__cards should be .skills__card
+  > .skills__card { display: inline-block; }
+  
+  @supports(display: flex) {
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: center;
+    // margin-right: -$-card-gap; // 1.) negative margin
+  }
+
+  @supports (display: grid) and (row-gap: 4rem) {
+    // display: grid;
+    // column-gap: 2rem;
+    // grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+    // justify-items: center;
+    // row-gap: 4rem;
+  }
+}
+.skills__card {
+  position: relative;
+  width: 100%;
+  max-width: 17.75rem;
+  min-height: 29.75rem;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  margin-right: $-card-gap;
+  margin-bottom: 4rem;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 25px 0 currentColor;
+  transition: all 0.35s, outline 0s;
+
+  &:hover, &:focus { transform: translateY(-2rem); }
+}
+.skills__title {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+.skills__list {
+  @include mix.remove-list-style;
+}
+.skills__item {
+  margin-bottom: 1rem;
+  font-family: var.$font-comfortaa;
+  font-size: 1.25rem;
+}
+
+// ------------------------------
+// | These are the lines in the bottom left of the card
+// ------------------------------
+.skills__graphic {
+  $-dimensions: 14.0625rem;
+  
+  // 1. use a negative value to move the element outside the card
+  $-position: $-dimensions * -0.5; // 1.
+
+  position: absolute;
+  bottom: $-position;
+  left: $-position;
+
+  width: $-dimensions;
+  height: $-dimensions;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+
+  &::after, &::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: $-dimensions;
+    height: $-dimensions;
+    content: "";
+    border: 2px solid currentColor;
+    border-radius: 50%;
+  }
+
+  &::after { transform: scale(1.15); }
+  &::before { transform: scale(1.32); }
+}
+
+
+// Individual Card Specific Stylings
+// ================================================== //
+
+// will be used in all .skills__card--n selectors
+%-card-decoration {
+  border: 2px solid currentColor;
+  outline: 0;
+}
+
+.skills__card--1 {
+  color: var.$color-secondary-shadow;
+
+  @supports (--css: variables) { color: var(--color-secondary-shadow); }
+
+  &:hover, &:focus {
+    color: var.$color-secondary;
+    @extend %-card-decoration;
+
+    @supports (--css: variables) { color: var(--color-secondary); }
+  }
+}
+.skills__card--2 {
+  color: var.$color-primary-shadow;
+
+  @supports (--css: variables) { color: var(--color-primary-shadow); }
+
+  &:hover, &:focus {
+    color: var.$color-primary;
+    @extend %-card-decoration;
+
+    @supports (--css: variables) { color: var(--color-primary); }
+  }
+}
+.skills__card--3 {
+  color: var.$color-tertiary-shadow;
+
+  @supports (--css: variables) { color: var(--color-tertiary-shadow); }
+
+  &:hover, &:focus {
+    color: var.$color-tertiary;
+    @extend %-card-decoration;
+
+    @supports (--css: variables) { color: var(--color-tertiary); }
+  }
+}

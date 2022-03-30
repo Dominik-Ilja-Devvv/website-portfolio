@@ -12,10 +12,13 @@
 @use "sidebar";
 @use "main";
 @use "portfolio";
+@use "skills";
 
 // ==================================================================================================== //
 // LAYOUT
 // ==================================================================================================== //
+
+
 
 .layout {
   // display: flex;
@@ -34,139 +37,7 @@
   }
 }
 
-.skills {
 
-  &__cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-right: -4rem;
-
-    @supports (display: grid) and (row-gap: 4rem) {
-      display: grid;
-      column-gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
-      justify-items: center;
-      row-gap: 4rem;
-    }
-  }
-  &__card {
-
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    min-height: 472px;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-right: 4rem;
-    margin-bottom: 4rem;
-    overflow: hidden;
-    text-align: center;
-    border-radius: 24px;
-    box-shadow: 0 0 25px 0 currentColor;
-    transition: all 0.35s, outline 0s;
-
-    &:hover, &:focus {
-      transform: translateY(-2rem);
-    }
-  }
-  &__card--1 {
-    color: var.$color-secondary-shadow;
-
-    @supports (--css: variables) {
-      color: var(--color-secondary-shadow, var.$color-secondary-shadow);
-    }
-
-    &:hover, &:focus {
-      color: var.$color-secondary;
-      border: 2px solid currentColor;
-      outline: 0;
-
-      @supports (--css: variables) {
-        color: var(--color-secondary, var.$color-secondary);
-      }
-    }
-  }
-  &__card--2 {
-    color: var.$color-primary-shadow;
-
-    @supports (--css: variables) {
-      color: var(--color-primary-shadow, var.$color-primary-shadow);
-    }
-
-    &:hover, &:focus {
-      color: var.$color-primary;
-      border: 2px solid currentColor;
-      outline: 0;
-
-      @supports (--css: variables) {
-        color: var(--color-primary, var.$color-primary);
-      }
-    }
-  }
-  &__card--3 {
-    color: var.$color-tertiary-shadow;
-
-    @supports (--css: variables) {
-      color: var(--color-tertiary-shadow, var.$color-tertiary-shadow);
-    }
-
-    &:hover, &:focus {
-      color: var.$color-tertiary;
-      border: 2px solid currentColor;
-      outline: 0;
-
-      @supports (--css: variables) {
-        color: var(--color-tertiary, var.$color-tertiary);
-      }
-    }
-  }
-  &__title {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-  }
-  &__list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  &__item {
-    margin-bottom: 1rem;
-    font-family: var.$font-comfortaa;
-    font-size: 1.25rem;
-  }
-  &__graphic {
-    $-dimensions: 225px;
-    $-position: -($-dimensions * 0.5);
-    position: absolute;
-    bottom: $-position;
-    left: $-position;
-
-    width: $-dimensions;
-    height: $-dimensions;
-    border: 2px solid currentColor;
-    border-radius: 50%;
-
-    &::after, &::before {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: $-dimensions;
-      height: $-dimensions;
-      content: "";
-      border: 2px solid currentColor;
-      border-radius: 50%;
-    }
-
-    &::after {
-      transform: scale(1.15);
-    }
-    &::before {
-      transform: scale(1.32);
-    }
-  }
-}
 
 .about {
   position: relative;
@@ -205,9 +76,10 @@
   column-gap: 3rem;
   grid-template-columns: minmax(280px, 1fr);
 
-  @media only screen and (min-width: 900px) {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  }
+  // causing overflow issue
+  // @media only screen and (min-width: 900px) {
+  //   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  // }
 
   .leading {
     margin-top: 0;

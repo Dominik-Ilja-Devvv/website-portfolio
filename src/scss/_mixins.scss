@@ -23,3 +23,9 @@
   visibility: hidden;
   opacity: 0;
 }
+
+@mixin remove-list-style {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
