@@ -1294,8 +1294,13 @@ img {
   }
 }
 .contact__img img {
-  min-width: 280px;
+  min-width: 17.5rem;
   height: 100%;
+}
+@media only screen and (min-width: 900px) {
+  .contact__img img {
+    min-height: 50rem;
+  }
 }
 
 .footer {

@@ -197,7 +197,9 @@
     // | of screwing with original dimensions
     // ------------------------------
 
-    min-width: 280px;
+    min-width: 17.5rem;
     height: 100%; 
+
+    @media only screen and (min-width: var.$bp-4) { min-height: 50rem; } // keeps image and form closer in size when side by side
   }
 }
