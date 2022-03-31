@@ -23,9 +23,7 @@ body {
   font-family: var.$font-rosario;
   background-color: var.$color-dark;
 
-  @supports (--css: variables) {
-    background-color: var(--color-dark);
-  }
+  @supports (--css: variables) { background-color: var(--color-dark); }
 }
 
 h1, h2, h3, h4, h5, h6, p {

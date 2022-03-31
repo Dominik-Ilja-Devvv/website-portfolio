@@ -3,14 +3,20 @@
 
 .portfolio__top {
   position: relative;
-
-  img {
+  overflow-y: visible;
+  // overflow-x: auto;
+  
+  img, svg {
     position: absolute;
     bottom: 0;
     z-index: -1; // image was overlapping button making it unclickable with mouse
     width: auto;
     height: 31.25rem;
     opacity: 0.05;
+    fill: none;
+    stroke: var.$color-white;
+    
+    @supports(--css: variables) { stroke: var(--color-white); }
 
     @media only screen and (min-width: var.$bp-8) { width: 100%; height: auto; }
   }
