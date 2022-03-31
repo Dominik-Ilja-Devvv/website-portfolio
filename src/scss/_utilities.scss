@@ -23,6 +23,7 @@
 // ==================================================================================================== //
 .divider {
   height: 2px;
+  min-height: 2px; // prevents element from disappearing in the case of overflow
   background-color: var.$color-muted;
 
   @supports (--css: variables) { background-color: var(--color-muted); }
