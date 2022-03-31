@@ -15,11 +15,11 @@
 // | width: 100%; prevents the body from resizing when position: fixed; is applied to the body.
 // ------------------------------
 
+html, body { overflow-x: hidden; }
+
 body {
   position: relative;
-  // height: 200vh; // TESTING
   width: 100%;
-  overflow-x: hidden;
   font-family: var.$font-rosario;
   background-color: var.$color-dark;
 

@@ -25,10 +25,13 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
   font-family: "Rosario", sans-serif;
   background-color: #222223;
 }
