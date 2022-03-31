@@ -3,26 +3,25 @@
 .contact {
   padding-bottom: 7rem;
 
-  // causing overflow issue
-  // @media only screen and (min-width: 900px) {
-    //   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    // }
-    
-    @supports(diaply: grid) {
-      // display: grid;
-      // justify-content: center;
-      // column-gap: 3rem;
-      // grid-template-columns: minmax(280px, 1fr);
-    }
-
-
   .leading { margin-top: 0; margin-bottom: 2rem; }
 }
 
+// ------------------------------
+// | controls layout for contact section
+// ------------------------------
 .contact__inner {
     text-align: center;
-    // margin-right: -4rem;
 
+    // ------------------------------
+    // | We're emulating a grid or flex display in this property by making
+    // | all of the children inline-block. We then have to go to the children 
+    // | to add on the desired widths and other properties.
+    // | 
+    // | When items are inline-block we can use vertical-align to align items vertically.
+    // | Text-align allows us to align the items horizontally.
+    // |
+    // | None of these values will have any effect if the display is grid.
+    // ------------------------------
     > * {
       display: inline-block;
       vertical-align: bottom;
@@ -31,36 +30,36 @@
       @media only screen and (min-width: var.$bp-7) { vertical-align: middle; }
     }
 
-  // > * {
-  //   display: inline-block;
-  //   margin-right: 5%;
-  //   width: 100%;
+    @supports(display: grid) {
+      display: grid;
+      column-gap: 4%;
+      grid-template-columns: 1fr;
 
-  //   &:last-child { margin-right: unset; }
-
-  //   @media only screen and (min-width: var.$bp-4) {
-  //     width: 40%;
-  //   }
-  // }
+      @media only screen and (min-width: var.$bp-4) { grid-template-columns: 45% 51%; }
+    }
 }
 
 .contact__content {
-  text-align: left;
+  text-align: left; // prevents text from being aligned from parent
   width: 100%;
   margin-bottom: 3rem;
 
   @media only screen and (min-width: var.$bp-4) {
-    width: 45%;
-    margin-right: 4%;
+
+    // ------------------------------
+    // | Have to assign width and margins manually for inline-block layout
+    // ------------------------------
+
+    width: 45%; 
+    margin-right: 4%; 
     margin-bottom: 0;
   }
 
-
-  
-  @supports(display: flex) {
-    // flex: 1;
-    // align-self: center;
-    // justify-self: center;
+  // this overrides previous media query values
+  @supports(display: grid) {
+    width: 100%; // allows grid to determine element width
+    margin-right: unset;
+    align-self: center;
   }
 }
 
@@ -183,21 +182,22 @@
 .contact__img {
   width: 100%;
 
+    // ------------------------------
+    // | Have to assign width and margins manually for inline-block layout
+    // ------------------------------
+
   @media only screen and (min-width: var.$bp-4) { width: 50%; }
   
-  @supports(display: flex) {
-    // display: flex;
-    // flex: 1;
-    // justify-content: center;
-    // justify-self: center;
-  }
+  @supports(display: grid) { width: 100%; } // allows grid to determine element width
 
   img {
-    // width: 100%;
-    min-width: 280px;
-    // max-width: 600px;
 
-    height: 100%;
-    // max-height: 800px; // larger screens
+    // ------------------------------
+    // | height 100% allows image to take up full height at expense
+    // | of screwing with original dimensions
+    // ------------------------------
+
+    min-width: 280px;
+    height: 100%; 
   }
 }

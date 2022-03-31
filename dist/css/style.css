@@ -1130,6 +1130,18 @@ img {
     vertical-align: middle;
   }
 }
+@supports (display: grid) {
+  .contact__inner {
+    display: grid;
+    column-gap: 4%;
+    grid-template-columns: 1fr;
+  }
+  @media only screen and (min-width: 900px) {
+    .contact__inner {
+      grid-template-columns: 45% 51%;
+    }
+  }
+}
 
 .contact__content {
   text-align: left;
@@ -1143,6 +1155,14 @@ img {
     margin-bottom: 0;
   }
 }
+@supports (display: grid) {
+  .contact__content {
+    width: 100%;
+    margin-right: unset;
+    align-self: center;
+  }
+}
+
 .contact__form {
   position: relative;
   padding: 1.5rem;
@@ -1266,6 +1286,11 @@ img {
 @media only screen and (min-width: 900px) {
   .contact__img {
     width: 50%;
+  }
+}
+@supports (display: grid) {
+  .contact__img {
+    width: 100%;
   }
 }
 .contact__img img {
