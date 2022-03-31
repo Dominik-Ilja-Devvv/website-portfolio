@@ -775,17 +775,25 @@ img {
 
 .portfolio__top {
   position: relative;
+  overflow-y: visible;
 }
-.portfolio__top img {
+.portfolio__top img, .portfolio__top svg {
   position: absolute;
   bottom: 0;
   z-index: -1;
   width: auto;
   height: 31.25rem;
   opacity: 0.05;
+  fill: none;
+  stroke: #fff;
+}
+@supports (--css: variables) {
+  .portfolio__top img, .portfolio__top svg {
+    stroke: var(--color-white);
+  }
 }
 @media only screen and (min-width: 1800px) {
-  .portfolio__top img {
+  .portfolio__top img, .portfolio__top svg {
     width: 100%;
     height: auto;
   }
