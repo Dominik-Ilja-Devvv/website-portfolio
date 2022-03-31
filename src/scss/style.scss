@@ -15,11 +15,11 @@
 @use "skills";
 @use "about";
 
+@use "footer";
+
 // ==================================================================================================== //
 // LAYOUT
 // ==================================================================================================== //
-
-
 
 .layout {
   // display: flex;
@@ -153,51 +153,4 @@
   }
 }
 
-.footer {
-  padding: 1rem;
-  background-color: var(--color-black, var.$color-black);
-  grid-column: 1 / -1;
 
-  @media only screen and (min-width: 1200px) {
-    display: none;
-  }
-
-  .social-icons {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    width: 100%;
-
-    $-link-dimensions: 2.25rem;
-    $-svg-dimensions: $-link-dimensions * 0.55;
-
-    svg {
-      position: relative;
-      top: 1px;
-      width: $-svg-dimensions;
-      height: $-svg-dimensions;
-      transition: all 0.35s;
-      fill: var(--color-primary-faded, var.$color-primary-faded);
-    }
-
-    .link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: $-link-dimensions;
-      height: $-link-dimensions;
-      text-decoration: none;
-      background-color: #222223;
-      border-radius: 50%;
-      transition: all 0.35s, outline 0;
-
-      &:not(:last-child) {
-        margin-right: 1rem;
-      }
-
-      &:hover svg {
-        fill: var(--color-primary, var.$color-primary);
-      }
-    }
-  }
-}

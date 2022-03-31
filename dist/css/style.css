@@ -244,6 +244,76 @@ img {
   transform: translateY(-1rem);
 }
 
+.social-icons {
+  width: 100%;
+}
+.social-icons > * {
+  margin-right: 0.65rem;
+}
+.social-icons > *:last-child {
+  margin-right: 0;
+}
+@supports (display: flex) {
+  .social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.social-icons__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.2375rem;
+  height: 1.2375rem;
+  transition: all 0.35s;
+  fill: #ff2c6d;
+}
+@supports (--css: variables) {
+  .social-icons__icon {
+    fill: var(--color-primary-faded);
+  }
+}
+@supports (display: flex) {
+  .social-icons__icon {
+    position: unset;
+    top: unset;
+    left: unset;
+    transform: unset;
+  }
+}
+.social-icons__link {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  text-decoration: none;
+  background-color: #222223;
+  border-radius: 50%;
+}
+@supports (--css: variables) {
+  .social-icons__link {
+    background-color: var(--color-dark);
+  }
+}
+@supports (display: flex) {
+  .social-icons__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.social-icons__link:hover svg {
+  fill: #ff2c6d;
+}
+@supports (--css: variables) {
+  .social-icons__link:hover svg {
+    fill: var(--color-primary);
+  }
+}
+
 .js-freeze {
   position: fixed;
   overflow: hidden;
@@ -587,31 +657,32 @@ img {
 .sidebar .logo {
   position: relative;
   width: 100%;
-  height: 132px;
+  height: 10.25rem;
 }
 @supports (display: flex) {
   .sidebar .logo {
-    position: static;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: auto;
-    padding: 1rem;
+    position: unset;
+    height: unset;
+    padding: 2rem 1rem;
   }
 }
 .sidebar .logo img {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100px;
-  height: 100px;
   transform: translate(-50%, -50%);
+  width: 6.25rem;
+  height: 6.25rem;
 }
 @supports (display: flex) {
   .sidebar .logo img {
-    position: static;
-    height: auto;
-    transform: none;
+    position: unset;
+    top: unset;
+    left: unset;
+    transform: unset;
   }
 }
 
@@ -627,7 +698,7 @@ img {
 }
 @media only screen and (min-width: 1200px) {
   .sidebar .divider {
-    margin-top: 2rem;
+    margin-top: 0;
     margin-bottom: 2rem;
     background-color: #333;
   }
@@ -673,9 +744,7 @@ img {
 }
 
 .sidebar .social-icons {
-  position: relative;
-  width: 100%;
-  height: 56px;
+  text-align: center;
 }
 @media (min-height: 500px) {
   .sidebar .social-icons {
@@ -683,79 +752,6 @@ img {
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
-  }
-}
-@supports (display: flex) {
-  .sidebar .social-icons {
-    display: flex;
-    flex: 1;
-    align-items: flex-end;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-}
-.sidebar .social-icons__inner {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-}
-@supports (display: flex) {
-  .sidebar .social-icons__inner {
-    display: flex;
-    align-items: end;
-    justify-content: center;
-  }
-}
-.sidebar .social-icons svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 1.2375rem;
-  height: 1.2375rem;
-  transition: all 0.35s;
-  transform: translate(-50%, -50%);
-  fill: rgba(255, 44, 109, 0.5);
-}
-@supports (--css: variables) {
-  .sidebar .social-icons svg {
-    fill: var(--color-primary-faded);
-  }
-}
-@supports (display: flex) {
-  .sidebar .social-icons svg {
-    position: static;
-    top: auto;
-    left: auto;
-    transform: none;
-  }
-}
-.sidebar .social-icons .link {
-  position: relative;
-  display: inline-block;
-  width: 2.25rem;
-  height: 2.25rem;
-  margin-right: 8px;
-  text-decoration: none;
-  background-color: #222223;
-  border-radius: 50%;
-}
-@supports (display: flex) {
-  .sidebar .social-icons .link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .sidebar .social-icons .link:not(:last-child) {
-    margin-right: 1rem;
-  }
-}
-.sidebar .social-icons .link:hover svg {
-  fill: #ff2c6d;
-}
-@supports (--css: variables) {
-  .sidebar .social-icons .link:hover svg {
-    fill: var(--color-primary, #ff2c6d);
   }
 }
 
@@ -802,9 +798,9 @@ img {
 }
 
 .portfolio__gallery::after {
-  content: "";
   display: table;
   clear: both;
+  content: "";
 }
 .portfolio__gallery > .portfolio__item {
   float: left;
@@ -831,8 +827,8 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   }
   .portfolio__gallery > .portfolio__item {
-    width: 100%;
     float: none;
+    width: 100%;
   }
   @media only screen and (min-width: 1400px) {
     .portfolio__gallery {
@@ -943,8 +939,8 @@ img {
 }
 
 .skills__cards {
-  text-align: center;
   margin-right: -4rem;
+  text-align: center;
 }
 .skills__cards > .skills__card {
   display: inline-block;
@@ -1108,6 +1104,29 @@ img {
   }
 }
 
+.footer {
+  padding: 1rem;
+  background-color: #151515;
+}
+@supports (--css: variables) {
+  .footer {
+    background-color: var(--color-black);
+  }
+}
+@supports (display: grid) {
+  .footer {
+    grid-column: 1/-1;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .footer {
+    display: none;
+  }
+}
+.footer .social-icons {
+  text-align: right;
+}
+
 @supports (display: grid) {
   .layout {
     display: grid;
@@ -1206,48 +1225,6 @@ img {
   max-width: 600px;
   height: 100%;
   max-height: 800px;
-}
-
-.footer {
-  padding: 1rem;
-  background-color: var(--color-black, #151515);
-  grid-column: 1/-1;
-}
-@media only screen and (min-width: 1200px) {
-  .footer {
-    display: none;
-  }
-}
-.footer .social-icons {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  width: 100%;
-}
-.footer .social-icons svg {
-  position: relative;
-  top: 1px;
-  width: 1.2375rem;
-  height: 1.2375rem;
-  transition: all 0.35s;
-  fill: var(--color-primary-faded, rgba(255, 44, 109, 0.5));
-}
-.footer .social-icons .link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  text-decoration: none;
-  background-color: #222223;
-  border-radius: 50%;
-  transition: all 0.35s, outline 0;
-}
-.footer .social-icons .link:not(:last-child) {
-  margin-right: 1rem;
-}
-.footer .social-icons .link:hover svg {
-  fill: var(--color-primary, #ff2c6d);
 }
 
 /*# sourceMappingURL=style.css.map */

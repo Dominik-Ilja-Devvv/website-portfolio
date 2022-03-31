@@ -1,0 +1,14 @@
+@use "variables" as var;
+
+
+.footer {
+  padding: 1rem;
+  background-color: var.$color-black;
+  
+  @supports(--css: variables) { background-color: var(--color-black); }
+  @supports(display: grid) { grid-column: 1 / -1; }
+
+  @media only screen and (min-width: 1200px) { display: none; }
+
+  .social-icons { text-align: right; }
+}

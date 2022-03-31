@@ -1,8 +1,16 @@
+// requires parent to have position other than static
 @mixin center-no-flex {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@mixin undo-center-no-flex {
+  position: unset;
+  top: unset;
+  left: unset;
+  transform: unset;
 }
 
 @mixin center-flex {
@@ -11,6 +19,7 @@
   justify-content: center;
 }
 
+// requires parent to have position other than static
 @mixin cover-overlay {
   position: absolute;
   top: 0;

@@ -3,6 +3,7 @@
 // ------------------------------
 
 @use "variables" as var;
+@use "mixins" as mix;
 
 // ==================================================================================================== //
 // B
@@ -222,6 +223,54 @@
 
     &:hover, &:focus {
       transform: translateY(-1rem);
+    }
+  }
+}
+
+.social-icons {
+  width: 100%;
+
+  > * {
+    margin-right: 0.65rem;
+
+    &:last-child { margin-right: 0; }
+  }
+
+  @supports(display: flex) { @include mix.center-flex; }
+
+  $-link-dimensions: 2.25rem;
+  $-svg-dimensions: $-link-dimensions * 0.55;
+
+  &__icon {
+    @include mix.center-no-flex;
+    width: $-svg-dimensions;
+    height: $-svg-dimensions;
+    transition: all 0.35s;
+    fill: var.$color-primary;
+    
+    @supports(--css: variables) { fill: var(--color-primary-faded); }
+
+    @supports(display: flex) { @include mix.undo-center-no-flex }
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: $-link-dimensions;
+    height: $-link-dimensions;
+    text-decoration: none;
+    background-color: var.$color-dark;
+    border-radius: 50%;
+
+    @supports(--css: variables) { background-color: var(--color-dark); }
+    
+    @supports(display: flex) { @include mix.center-flex; }
+
+    &:hover svg {
+      fill: var.$color-primary;
+      
+      @supports(--css: variables) { fill: var(--color-primary); }
     }
   }
 }

@@ -27,9 +27,9 @@
   // TODO : Create Layout using floats
 
   &::after {
-    content: "";
     display: table;
     clear: both;
+    content: "";
   }
 
   // expects all direct children to be .portfolio__item
@@ -46,7 +46,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
 
-    > .portfolio__item { width: 100%; float: none; }
+    > .portfolio__item { float: none; width: 100%; }
 
     @media only screen and (min-width: var.$bp-7) { grid-template-columns: repeat(4, 1fr); }
   }
@@ -106,7 +106,7 @@
 .portfolio__cta {
   @include mix.center-no-flex;
   @include mix.hide;
-  
+
   z-index: var.$z-index-2;
   width: 130px;
   height: 130px;
