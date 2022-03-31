@@ -8,7 +8,11 @@
   @supports(--css: variables) { background-color: var(--color-black); }
   @supports(display: grid) { grid-column: 1 / -1; }
 
-  @media only screen and (min-width: 1200px) { display: none; }
+  @media only screen and (min-width: var.$bp-6) { display: none; }
 
-  .social-icons { text-align: right; }
+  .social-icons {
+    text-align: right;
+
+    @supports(display: flex) { justify-content: flex-end; }
+  }
 }

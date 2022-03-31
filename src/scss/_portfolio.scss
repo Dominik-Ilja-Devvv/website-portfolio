@@ -24,7 +24,6 @@
 
 // controls layout for gallery items
 .portfolio__gallery {
-  // TODO : Create Layout using floats
 
   &::after {
     display: table;
@@ -46,7 +45,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
 
-    > .portfolio__item { float: none; width: 100%; }
+    > .portfolio__item { float: unset; width: 100%; }
 
     @media only screen and (min-width: var.$bp-7) { grid-template-columns: repeat(4, 1fr); }
   }
