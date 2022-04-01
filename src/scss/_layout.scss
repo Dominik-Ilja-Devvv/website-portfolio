@@ -1,0 +1,11 @@
+.layout {
+
+  // ------------------------------
+  // | The inline-block layout for older browsers is handled on the elements themselves
+  // ------------------------------
+
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: 12.5rem 1fr;
+  }
+}

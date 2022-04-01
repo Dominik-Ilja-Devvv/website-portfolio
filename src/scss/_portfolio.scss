@@ -3,9 +3,8 @@
 
 .portfolio__top {
   position: relative;
-  overflow-y: visible;
-  // overflow-x: auto;
-  
+  overflow-y: visible; // lets img or svg overflow into above section
+
   img, svg {
     position: absolute;
     bottom: 0;
@@ -15,8 +14,8 @@
     opacity: 0.05;
     fill: none;
     stroke: var.$color-white;
-    
-    @supports(--css: variables) { stroke: var(--color-white); }
+
+    @supports (--css: variables) { stroke: var(--color-white); }
 
     @media only screen and (min-width: var.$bp-8) { width: 100%; height: auto; }
   }
@@ -28,7 +27,9 @@
   .leading { max-width: 700px; }
 }
 
-// controls layout for gallery items
+// ------------------------------
+// | Controls layout for gallery items
+// ------------------------------
 .portfolio__gallery {
 
   &::after {
@@ -76,8 +77,7 @@
     .portfolio__overlay { background-color: rgba(0, 0, 0, 0.75); }
 
     .portfolio__cta {
-      visibility: visible;
-      opacity: 1;
+      @include mix.show;
 
       @supports (display: flex) { transform: scale(1); }
     }
@@ -113,8 +113,8 @@
   @include mix.hide;
 
   z-index: var.$z-index-2;
-  width: 130px;
-  height: 130px;
+  width: 8.125rem;
+  height: 8.125rem;
   font-size: 1.75rem;
   color: var.$color-white;
   text-align: center;
@@ -124,25 +124,19 @@
   transition: all 0.35s, outline 0s;
 
   @supports (--css: variables) {
-    color: var(--color-white, var.$color-white);
-    border: 3px solid var(--color-primary, var.$color-primary);
-    box-shadow: 0 0 25px var(--color-primary, var.$color-primary);
+    color: var(--color-white);
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 0 25px var(--color-primary);
   }
 
   @supports (display: flex) {
     @include mix.center-flex;
-    position: relative;
-    top: unset;
-    left: unset;
-    transform: scale(0);
+    @include mix.undo-center-no-flex
   }
 }
 
 .portfolio__cta-inner {
   @include mix.center-no-flex;
 
-  @supports (display: flex) {
-    position: static;
-    transform: none;
-  }
+  @supports (display: flex) { @include mix.undo-center-no-flex }
 }

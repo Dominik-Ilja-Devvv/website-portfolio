@@ -1,7 +1,7 @@
 // ------------------------------
 // | Setting a width to 100% will cause "main" to overflow
-// | because of the margin. We're using this margin
-// | give space to the sidebar on desktop screens for older browsers.
+// | because of the margin. We're using this margin to give
+// | space to the sidebar on desktop screens for older browsers.
 // | This margin will become irrelevent once we get to newer tech.
 // ------------------------------
 
@@ -9,16 +9,12 @@
 
 .main {
 
-  @media (min-width: var.$bp-6) {
-    margin-left: 12.5rem;
-  }
+  @media (min-width: var.$bp-6) { margin-left: 12.5rem; }
 
   @supports (display: grid) {
     margin-left: unset;
     grid-column: 1 / 3;
 
-    @media only screen and (min-width: var.$bp-6) {
-      grid-column: 2 / 3;
-    }
+    @media only screen and (min-width: var.$bp-6) { grid-column: 2 / 3; }
   }
 }

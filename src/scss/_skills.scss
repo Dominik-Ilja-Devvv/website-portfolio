@@ -8,13 +8,12 @@
 $-card-gap: 4rem;
 
 .skills__cards {
-  margin-right: -$-card-gap; // 1.
-
   // ------------------------------
   // | 1. adding a negative margin allows the inline blocks and
   // |    flex layout to wrap the items properly to the next line.
   // ------------------------------
 
+  margin-right: -$-card-gap; // 1.
   text-align: center; // this relies on the children being "display: inline-block;"
 
   // all direct children of .skills__cards should be .skills__card
@@ -44,14 +43,15 @@ $-card-gap: 4rem;
 
   &:hover, &:focus { transform: translateY(-2rem); }
 }
+
 .skills__title {
   margin-top: 0;
   margin-bottom: 2rem;
   font-size: 2.5rem;
 }
-.skills__list {
-  @include mix.remove-list-style;
-}
+
+.skills__list { @include mix.remove-list-style; }
+
 .skills__item {
   margin-bottom: 1rem;
   font-family: var.$font-comfortaa;
@@ -59,10 +59,10 @@ $-card-gap: 4rem;
 }
 
 // ------------------------------
-// | These are the lines in the bottom left of the card
+// | Lines in the bottom left of the card
 // ------------------------------
 .skills__graphic {
-  $-dimensions: 14.0625rem;
+  $-dimensions: 14rem;
 
   // 1. use a negative value to move the element outside the card
   $-position: $-dimensions * -0.5; // 1.

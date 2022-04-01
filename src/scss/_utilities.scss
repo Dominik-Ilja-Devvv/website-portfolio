@@ -9,8 +9,8 @@
 // ==================================================================================================== //
 .container, .container-center {
   max-width: 80rem;
-  padding-right: 0.625rem;
-  padding-left: 0.625rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 
   @media only screen and (min-width: var.$bp-2) { padding-right: 2rem; padding-left: 2rem; }
   @media only screen and (min-width: var.$bp-4) { padding-right: 3rem; padding-left: 3rem; }

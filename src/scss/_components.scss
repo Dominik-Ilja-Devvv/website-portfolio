@@ -21,9 +21,9 @@
 
   &--md {
     width: 100%;
-    max-width: 175px;
+    max-width: 10.9375rem;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: var.$fs-normal;
   }
 
   &--lg {
@@ -94,13 +94,9 @@
 // The active class gets added by JavaScript to change the styling from opened to closed
 .nav-toggle {
   position: fixed;
-  top: 16px;
-  right: 16px;
+  top: 1rem;
+  right: 1rem;
   z-index: var.$z-index-7;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
   width: 50px;
   height: 50px;
   padding: 0;
@@ -108,25 +104,20 @@
   border: none;
   border-radius: 4px;
 
-  @media only screen and (min-width: 1200px) {
-    display: none;
-  }
+  @media only screen and (min-width: var.$bp-6) { display: none; }
 
   &:focus, &:hover, &.active {
     .line {
       background-color: var.$color-primary;
 
-      @supports (--css: variables) {
-        background-color: var(--color-primary, var.$color-primary);
-      }
+      @supports (--css: variables) { background-color: var(--color-primary); }
     }
   }
+
   &:focus {
     outline: 2px solid var.$color-primary;
 
-    @supports (--css: variables) {
-      outline: 2px solid var(--color-primary, var.$color-primary);
-    }
+    @supports (--css: variables) { outline: 2px solid var(--color-primary); }
   }
 
   .line {
@@ -135,41 +126,32 @@
     position: absolute;
     top: 50%;
     right: 20%;
-    left: 20%;
     width: 60%;
     height: 3px;
     background-color: var.$color-white;
     transition: all 0.35s, outline 0s;
 
-    @supports (--css: variables) {
-      background-color: var(--color-white, var.$color-white);
-    }
+    @supports (--css: variables) { background-color: var(--color-white); }
 
-    &--1 {
-      transform: translateY(-$-line-height);
-    }
-    &--3 {
-      transform: translateY($-line-height);
-    }
+    &--1 { transform: translateY(-$-line-height); }
+    &--3 { transform: translateY($-line-height); }
   }
 
+  // ------------------------------
+  // | Controls the lines when the class of .active is added by JavaScript
+  // ------------------------------
   &.active {
-
-    .line--1 {
-      transform: translateY(0) rotate(135deg);
-    }
-    .line--2 {
-      transform: scale(0);
-    }
-    .line--3 {
-      transform: translateY(0) rotate(-135deg);
-    }
+    .line--1 { transform: translateY(0) rotate(135deg); }
+    .line--2 { transform: scale(0); }
+    .line--3 { transform: translateY(0) rotate(-135deg); }
   }
 }
 
 // ==================================================================================================== //
 // P
 // ==================================================================================================== //
+
+// TODO: Progressive Enhancement - Create layout without flex
 .project-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -180,9 +162,7 @@
   .btn--md {
     max-width: 100%;
 
-    @media only screen and (min-width: 500px) {
-      max-width: 200px;
-    }
+    @media only screen and (min-width: var.$bp-2) { max-width: 12.5rem; }
   }
 
   * {
@@ -195,6 +175,8 @@
 // ==================================================================================================== //
 // S
 // ==================================================================================================== //
+
+// TODO: Progressive Enhancement - Create layout without flex
 .skill-list {
   display: flex;
   flex-direction: row;
@@ -207,7 +189,7 @@
   list-style: none;
 
   &__item {
-    $-dimensions: 125px;
+    $-dimensions: 7.75rem;
 
     display: flex;
     align-items: center;
@@ -216,14 +198,14 @@
     height: $-dimensions;
     margin-right: 2rem;
     margin-bottom: 2rem;
-    color: var(--color-white, var.$color-white);
-    border: 3px solid var(--color-bella, var.$color-bella);
+    color: var.$color-white;
+    border: 3px solid var.$color-bella;
     border-radius: 50%;
     transition: all 0.5s;
 
-    &:hover, &:focus {
-      transform: translateY(-1rem);
-    }
+    @supports (--css: variables) { color: var(--color-white); border-color: var(--color-bella); }
+
+    &:hover, &:focus { transform: translateY(-1rem); }
   }
 }
 
@@ -236,41 +218,48 @@
     &:last-child { margin-right: 0; }
   }
 
-  @supports(display: flex) { @include mix.center-flex; }
+  @supports (display: flex) { @include mix.center-flex; }
 
   $-link-dimensions: 2.25rem;
   $-svg-dimensions: $-link-dimensions * 0.55;
 
   &__icon {
+
+    // ------------------------------
+    // | We may be able to do an inline-block layout with vertical-align & text center.
+    // | Right now this relies on a width & height being defined by the parent.
+    // ------------------------------
+
     @include mix.center-no-flex;
     width: $-svg-dimensions;
     height: $-svg-dimensions;
     transition: all 0.35s;
     fill: var.$color-primary;
-    
-    @supports(--css: variables) { fill: var(--color-primary-faded); }
 
-    @supports(display: flex) { @include mix.undo-center-no-flex }
+    @supports (--css: variables) { fill: var(--color-primary-faded); }
+
+    @supports (display: flex) { @include mix.undo-center-no-flex; }
   }
 
   &__link {
     position: relative;
     display: inline-block;
-    text-align: center;
     width: $-link-dimensions;
     height: $-link-dimensions;
+    text-align: center;
     text-decoration: none;
     background-color: var.$color-dark;
     border-radius: 50%;
 
-    @supports(--css: variables) { background-color: var(--color-dark); }
-    
-    @supports(display: flex) { @include mix.center-flex; }
+    @supports (--css: variables) { background-color: var(--color-dark); }
 
+    @supports (display: flex) { @include mix.center-flex; }
+
+    // TODO - Make selector capable of handling more formats
     &:hover svg {
       fill: var.$color-primary;
-      
-      @supports(--css: variables) { fill: var(--color-primary); }
+
+      @supports (--css: variables) { fill: var(--color-primary); }
     }
   }
 }

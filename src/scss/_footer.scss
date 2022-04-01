@@ -1,18 +1,22 @@
 @use "variables" as var;
 
-
 .footer {
   padding: 1rem;
   background-color: var.$color-black;
-  
-  @supports(--css: variables) { background-color: var(--color-black); }
-  @supports(display: grid) { grid-column: 1 / -1; }
+
+  @supports (--css: variables) { background-color: var(--color-black); }
+  @supports (display: grid) { grid-column: 1 / -1; }
 
   @media only screen and (min-width: var.$bp-6) { display: none; }
 
   .social-icons {
+
+    // ------------------------------
+    // | children are set to inline-block allowing us to align them with text-align
+    // ------------------------------
+
     text-align: right;
 
-    @supports(display: flex) { justify-content: flex-end; }
+    @supports (display: flex) { justify-content: flex-end; }
   }
 }

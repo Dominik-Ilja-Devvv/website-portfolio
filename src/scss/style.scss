@@ -1,13 +1,8 @@
-// TODO:
-// --------------------
-// > 1. ADD Focus and hover states to all interactable elements
-// > 2. Import partial files into main file
-
-@use "variables" as var;
 @use "base";
 @use "components";
 @use "js";
 @use "utilities";
+@use "layout";
 @use "intro";
 @use "sidebar";
 @use "main";
@@ -16,28 +11,3 @@
 @use "about";
 @use "contact";
 @use "footer";
-
-// ==================================================================================================== //
-// LAYOUT
-// ==================================================================================================== //
-
-.layout {
-  // display: flex;
-  // flex-direction: column;
-
-  // :first-child {
-  //   width: 200px;
-  // }
-  // :not(:first-child) {
-  //   flex-grow: 1;
-  // }
-
-  @supports (display: grid) {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-  }
-}
-
-
-
-
